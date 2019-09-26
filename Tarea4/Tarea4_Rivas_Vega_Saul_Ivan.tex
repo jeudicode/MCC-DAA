@@ -1,0 +1,270 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage[spanish]{babel}
+ \usepackage{url}
+\usepackage[spanish, fixlanguage]{babelbib}
+\bibliographystyle{IEEEtran}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+
+\title{Tarea 4}
+
+\author{
+	Saul Ivan Rivas Vega \\
+	\\
+	Diseño y análisis de algoritmos\\
+\\
+	Equipo Completo:\\
+		Yadira Fleitas Toranzo\\
+		Diego de Jesús Isla Lopez\\
+		Saul Ivan Rivas Vega\\
+}
+
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\pagebreak
+	\section{Ejercicio 1.}
+	\subsection{Da un ejemplo de una familia de digráficas de $n$ vértices con pesos no negativos tal que admita una ejecución del algoritmo de Dijkstra en la cual todos los nodos actualizan a su padre y su estimación de distancia $d(v)$ una sola vez; es decir, la primera oferta de camino que reciben, es la del camino mas corto. Demuestra que tu ejemplo cumple lo que se pide.}
+	\paragraph{}Sea $F$ la familia de digráficas que cumpla las siguientes condiciones para cada miembro $G$ de ella:\\
+	La gráfica $G$ tiene un conjunto de aristas ponderadas $E$ tal que $|E| = n$ donde cada arista tiene un peso mayor a cero y un conjunto de vértices $V$ tal que $|V| = n$.\\
+	$G$ es conexa.\\
+	Todo $v\in V$ tiene $inDegree(v) = 1$, es decir que tienen exactamente una sola arista de entrada.\\
+	Todo $v\in V$ tiene $outDegree(v) = 1$, es decir que tienen exactamente una sola arista de salida. \\
+	Solo hay un ciclo y todo $v\in V$ esta en el ciclo.
+	\subsection{Da un ejemplo de una familia de digráficas con pesos no negativos tal que cualquier ejecución del algoritmo de Dijkstra requiera que algún vértice actualice su padre y su estimación de distancia dos veces. Demuestra que tu ejemplo cumple lo que se pide.}
+	 \begin{table}[h!]
+	 	\begin{center}
+	 		\label{tab:wedding_problem_W}
+	 		\begin{tabular}{C{2cm} ||C{2cm} |C{2cm} |C{2cm} |C{2cm} |C{2cm} |}
+	 			\textbf{} & \textbf{1st} & \textbf{2nd} & \textbf{3rd}  & \textbf{4th} & \textbf{5th}\\
+	 			\hline
+	 			Carla & Pedro & Tavo & Paco & Beto & Pablo\\
+	 			\hline
+	 			Luna & Pablo & Tavo & Beto & Pedro & Paco\\
+	 			\hline
+	 			Ana & Paco & Tavo & Beto & Pablo & Pedro\\
+	 			\hline
+	 			 Diana& Tavo & Pedro & Beto & Paco & Pablo\\
+	 			 \hline
+	 			 Nia & Tavo & Pedro & Pablo & Beto & Paco\\
+	 		\end{tabular}
+	 		\caption{Matriz de preferencias de las mujeres.}
+	 	\end{center}
+	 \end{table}
+  \begin{table}[h!]
+ 	\begin{center}
+ 		\label{tab:wedding_problem_M}
+ 		\begin{tabular}{C{2cm} ||C{2cm} |C{2cm} |C{2cm} |C{2cm} |C{2cm} |}
+ 			\textbf{} & \textbf{1st} & \textbf{2nd} & \textbf{3rd}  & \textbf{4th} & \textbf{5th}\\
+ 			\hline
+ 			Pedro & Carla & Diana & Nia & Ana & Luna\\
+ 			\hline
+ 			Pablo & Carla & Ana & Nia & Luna & Diana\\
+ 			\hline
+ 			Tavo & Carla & Luna & Diana & Nia & Ana\\
+ 			\hline
+ 			Beto& Luna & Carla & Ana & Diana & Nia\\
+ 			\hline
+ 			Paco & Ana & Carla & Diana & Nia & Luna\\
+ 		\end{tabular}
+ 		\caption{Matriz de preferencias de los hombres.}
+ 	\end{center}
+ \end{table}
+\begin{equation}\label{N_set}
+N = \{(Pablo-Ana), (Tavo-Nia), (Tavo-Carla)\} 
+\end{equation}
+Único Emparejamiento Estable:
+\begin{equation}\label{S_set1}
+S = \{(Pedro-Carla), (Paco-Ana), (Beto-Diana), (Tavo-Luna), (Pablo-Nia)\} 
+\end{equation}
+\paragraph{Demostración}\label{demos_gale}Un emparejamiento estable que da el algoritmo es óptimo para los hombres y pésimo para las mujeres si es que los hombres proponen, sin embargo si las mujeres proponen el emparejamiento es óptimo para las mujeres y pésimo para los hombres, entonces si el emparejamiento es el mismo quiere decir que tanto la mejor y peor pareja para cada quién es la misma y por lo tanto única.
+\subsection{Utiliza las definiciones de \textit{pareja válida} y \textit{mejor pareja válida} para demostrar que en cualquier ejecución del algoritmo si $(h,m)$ está en el apareamiento resultante, entonces $m$ es la mejor pareja válida de $h$}
+\paragraph{Demostración} Por contradicción.\\
+Supongamos que un hombre $h$ al terminar  la ejecución del algoritmo no fue emparejado con su \textit{mejor pareja válida} en este caso $m$. Es decir que en el emparejamiento resultante $S$ pasa que $(h,m) \notin S$.\\ Entonces $h$ debió ser rechazado por $m$ en favor de otro $h'$ que fuera de mayor preferencia para $m$. \\
+Tomemos la primera vez que esto pasa, que $h$ fuera el primer hombre rechazado durante la ejecución del algoritmo. 
+\\Eso quiere decir que $h'$ no ha sido rechazado ni por la mujer que mas prefiere, pues en el algoritmo los hombres se proponen en orden de preferencia.
+\\ Por lo anterior decimos que $m$ es la mujer de mayor preferencia para $h'$.\\
+Por la definición de \textit{pareja válida} debe existir un emparejamiento estable $S'$ donde $(h,m)\in S'$. En $S'$  la pareja de $h'$ sería otra mujer $m'$. \\ Ahora tenemos $(h', m')\in S'$ y $(h,m) \in S'$.
+Pero como $m$ es la mujer de mayor preferencia para $h'$ y $m$ prefiere a $h'$ antes que a $h$, hay una inestabilidad y por lo tanto dicho emparejamiento $S'$ no es estable.\\
+ Así demostramos que para todo hombre no existe un emparejamiento estable que lo tenga emparejado con una mujer que sea de mayor preferencia que su pareja al terminar la ejecución del algoritmo.\\ 
+Finalmente decimos que en cualquier ejecución del algoritmo si $(h,m)$ está en el apareamiento resultante, entonces $m$ es la mejor pareja válida de $h$.
+\section{Ejercicio 2.}
+\paragraph{}En clase revisamos que es falso lo siguiente: para cualesquiera funciones $f$ y $g$ cuyo codominio es $\mathbb{R}$ se cumple que si existe $c>0$ y una cantidad infinita de $x\in Dom(f)$ satisfacen la desigualdad $f(x) \geq cg(x)$, entonces $f\in \Omega(g)$.\\\\
+Demuestra que existen (dando un ejemplo) funciones $f$ y $g$ cuyo codominio es $\mathbb{R}$ y una constante $c>0$ tales que para una cantidad infinita de $x\in Dom(f)$ la desigualdad  $f(x) \leq cg(x)$ es verdadera y además $f\in\Omega(x)$
+
+\paragraph{Demostración} Usando las siguientes funciones:
+\begin{equation}\label{f_ej2}
+f(x) = x
+\end{equation}
+\begin{equation}\label{g_ej2}
+g(x) = 1
+\end{equation}
+Tomando en cuenta que el Dominio de las Funciones es $\mathbb{R}$ tenemos una cantidad infinita de $x$ que cumplen que $0\leq x \leq 1$ y en esa cantidad infinita de $x$ se cumple que existe una $c$, en este caso $c=1$, donde $f(x)\leq cg(x)$, sin embargo si tomamos $x_{0}=1$ para la definición de $\Omega$ tendremos que a partir de ese $x_{0}$ para toda $x \geq x_{0}$ será verdadero que 
+$f(x)\geq cg(x)$ y por lo tanto $f\in\Omega(g)$.\\ Finalmente se demuestra con el ejemplo que si existen $f$ y $g$ para las cuales existe una constante $c>0$ tal que para una cantidad infinita de $x\in Dom(f)$ la desigualdad  $f(x) \leq cg(x)$ es verdadera y además $f\in\Omega(x)$.
+\pagebreak
+\section{Ejercicio 3. Considera la siguiente definición: \\$f$ es $\Omega'(g)$ si existe $c>0$ tal que \\$f(n)\geq cg(n)\geq 0$ para un número infinito de valores de $n$.}
+\subsection{Demuestra que, para cualesquiera $f$ y $g$ tales que $f,g\geq 0$, ya sea que $f\in O(g)$ o $f\in\Omega'(g)$}
+\paragraph{Demostración.} Por contradicción, supongamos que existen $f,g\geq 0$  tales que no cumplen $f\in O(g)$ ni $f\in\Omega'(g)$, es decir que $f\notin O(g)$ y $f\notin\Omega'(g)$.\\\\
+Para que $f\notin\Omega'(g)$ quiere decir que no existe una constante $c\geq0$ tal que $f(n)\geq cg(n)\geq 0$ para un número infinito de valores de $n$, entonces debe tener un número finito o ningún valor de $n$ donde $f(n)\geq cg(n)\geq 0$ para toda constante $c\geq0$.
+\\
+Pero en $f$ al terminar el numero finito de valores (o al inicio si no hay ) se empieza a cumplir que $f(n)<cg(n)$ para toda $c\geq0$ pero eso entra en la definición para que $f\in O(g)$ lo que implica contradicción a la suposición inicial de que $f\notin O(g)$ porque $f$ no puede estar y no estar al mismo tiempo en $O(g)$. \\
+Por lo tanto decimos que no existen $f,g>0$ tal que no se cumpla que $f\in O(g)$ o $f\in\Omega'(g)$.\\
+Entonces demostramos que para cualesquiera $f$ y $g$ tales que $f,g\geq 0$, ya sea que $f\in O(g)$ o $f\in\Omega'(g)$.
+\pagebreak
+\subsection{Prueba que de hecho existe $f$ tal que $f\in O(g)$ y $f\in\Omega'(g)$.}
+\paragraph{Demostración.} Encontrando $f$ y $g$ que cumplan con que $f\in O(g)$ y $f\in\Omega'(g)$.\\
+Tomando en cuenta que $Dom(f)$ y $Dom(g)$ es $\mathbb{R}$ y también su codominio es  $\mathbb{R}$  podemos proponer las siguientes funciones:
+\begin{equation}\label{f_ej3}
+f(n) = 1
+\end{equation}
+\begin{equation}\label{g_ej3}
+g(n) = n
+\end{equation}
+Tenemos una cantidad infinita de $n$ que cumplen que $0\leq n \leq 1$ y en esa cantidad infinita de $n$ se cumple que existe una $c$, en este caso $c=1$, donde $f(n)\geq cg(n)$, sin embargo si tomamos $n_{0}=1$ para la definición de $O$ tendremos que a partir de ese $n_{0}$ para toda $n \geq n_{0}$ será verdadero que 
+$f(n)\leq cg(n)$ y por lo tanto $f\in O(g)$.\\ Finalmente se demuestra con el ejemplo que si existen $f$ y $g$ para las cuales existe una constante $c>0$ tal que para una cantidad infinita de $n$ la desigualdad  $f(n) \geq cg(n)$ es verdadera, por lo tanto $f\in\Omega'(g)$ y además $f\in O(g)$.
+
+\subsection{Demuestra que el inciso anterior no es verdadero si se cambia $\Omega$ por $\Omega'$}
+\subsubsection{Demuestra que es falso que, para cualesquiera $f$ y $g$ tales que $f,g\geq 0$, ya sea que $f\in O(g)$ o $f\in\Omega(g)$}
+\paragraph{Demostración.} Encontrando $f$ y $g$ que cumplan con que $f\notin O(g)$ y $f\notin\Omega(g)$.\\
+Podemos proponer las siguientes funciones:
+\begin{equation}\label{f_ej3.2}
+f(n) = 
+\begin{cases}
+\text{1,} &\text{n es par}\\
+\text{$n^{2}$,} &\text{n no es par} \\
+\end{cases}
+\end{equation}
+\begin{equation}\label{g_ej3.2}
+g(n) = n
+\end{equation}
+$f\notin O(g)$ por que no existen una $c>0$  ni un $n_{0}$ tales que para toda $n\geq n_{0}$ se cumpla $f(n)\leq cg(n)$, puesto que en el caso donde $n$ no es par el valor de $n^{2}$ será mayor al de $n$.\\
+$f\notin\Omega(g)$ por que no existen una $c>0$  ni un $n_{0}$ tales que para toda $n\geq n_{0}$ se cumpla $f(n)\geq cg(n)$, puesto que en el caso donde $n$ es par el valor de $1$ será menor al de $n$.\\
+Como $f\notin O(g)$ y $f\notin\Omega(g)$ se demuestra que es falso que  para cualesquiera $f$ y $g$ tales que $f,g\geq 0$, ya sea que $f\in O(g)$ o $f\in\Omega(g)$.
+\subsubsection{Demuestra que es falso que, existe $f$ tal que $f\in O(g)$ y $f\in\Omega(g)$.}
+\paragraph{Observación:} Aunque la descripción de la tarea menciona que hay que demostrar la falsedad del enunciado realmente demostraremos que es verdadero pues es la definición misma de $\Theta$.
+\paragraph{Demostración.} Encontrando $f$ y $g$ que cumplan con que $f\in O(g)$ y $f\in\Omega(g)$.\\
+Podemos proponer las siguientes funciones:
+\begin{equation}\label{f_ej3.3}
+f(n) = n
+\end{equation}
+\begin{equation}\label{g_ej3.3}
+g(n) = n
+\end{equation}
+$f\in O(g)$ por que existen una $c>0$, en este caso $c=1$ y un $n_{0}$, en este caso $n_{0}=0$ tales que para toda $n\geq n_{0}$ se cumple $f(n)\leq cg(n)$.\\
+$f\in\Omega(g)$ por que existen una $c>0$, en este caso $c=1$ y un $n_{0}$, en este caso $n_{0}=0$ tales que para toda $n\geq n_{0}$ se cumple $f(n)\geq cg(n)$.\\
+Como $f\in O(g)$ y $f\in\Omega(g)$ se demuestra que es verdadero que existe $f$ tal que $f\in O(g)$ y $f\in\Omega(g)$.
+\pagebreak
+\section{Ejercicio.4 Busca las definiciones de omega minúscula y o minúscula, explícalas en tus propias palabras y presenta ejemplos de funciones que te parezcan interesantes respecto a estas notaciones (explica por que te lo parecen), da propiedades y su relación con $O$ y $\Omega$}
+\subsection{$o$ ($o$ minúscula)}
+\paragraph{} La pequeña $o$ es para denotar una cota superior que no puede ser <<tocada>> por $f$ es decir que a diferencia de $O$ si $f\in o(g)$ no puede pasar que $f(n)=cg(n)$, tiene que ser estrictamente menor. Formalmente $f\in o(g)$ si existen una constante $c>0$ y una $n_{0}$ tal que para toda $n\geq n_{0}$ se cumple que $f(n)<cg(n)$.\\
+Un ejemplo interesante es ver el efecto que tiene usar $o$ en funciones iguales:
+\begin{equation}\label{f_ej4.1}
+f(n) = n
+\end{equation}
+\begin{equation}\label{g_ej4.1}
+g(n) = n
+\end{equation}
+En este caso $f\notin o(g)$ porque la definición requiere que sea estrictamente menor.
+\begin{equation}\label{f2_ej4.1}
+f(n) = n
+\end{equation}
+\begin{equation}\label{g2_ej4.1}
+g(n) = n^{2}
+\end{equation}
+En este caso $f\in o(g)$.
+\paragraph{Propiedades y relación con $O$} Podemos ver que si $f\in o(g)$ entonces $f\in O(g)$ ya que para que $f\in O(g)$ basta con que sea menor o igual en la condición para encontrar una constante $c>0$ y una $n_{0}$ tal que para toda $n\geq n_{0}$ se cumple que $f(n)\leq cg(n)$.  \\
+Otra propiedad es que si $f\in o(g)$ entonces $g\in\omega(f)$ lo cual veremos a continuación al ver la definición de $\omega$.
+\subsection{$\omega$ (omega minúscula)}
+\paragraph{} La pequeña $\omega$ es para denotar una cota inferior que es estricta al igual que la pequeña $o$ solo que ahora tiene que ser estrictamente mayor su crecimiento. Formalmente $f\in\omega(g)$ si existen una constante $c>0$ y una $n_{0}$ tal que para toda $n\geq n_{0}$ se cumple que $f(n)>cg(n)$.\\
+Un ejemplo es ver el efecto que tiene usar $\omega$ en funciones iguales que de igual forma que $o$ implica que $f\notin\omega(g)$.
+\begin{equation}\label{f2_ej4.2}
+f(n) = n^{2}
+\end{equation}
+\begin{equation}\label{g2_ej4.2}
+g(n) = n^{3}
+\end{equation}
+En este caso $f\in\omega(g)$, si nos damos cuenta prácticamente requiere ser incluso de un orden superior el polinomio para que se cumpla la condición.
+\paragraph{Propiedades y relación con $\Omega$} Podemos ver que si $f\in \omega(g)$ entonces $f\in \Omega(g)$ ya que para que $f\in O(g)$ basta con que sea mayor o igual en la condición para encontrar una constante $c>0$ y una $n_{0}$ tal que para toda $n\geq n_{0}$ se cumple que $f(n)\geq cg(n)$. 
+\section{Ejercicio 5.}
+\paragraph{} Presenta un algoritmo de complejidad $O(n^{2})$ para el problema 3-SUM: Dado un arreglo de $n$ enteros diferentes, encuentra tres de ellos cuya suma sea 0. 
+\subsection{Algoritmo}
+\begin{algorithm}[H]\footnotesize
+	\SetAlgoLined
+	\KwData{Un arreglo $A$ de numeros diferentes ordenados de tamaño $n$.}
+	\KwResult{3 indices $i$, $j$ y $k$ que determinan los 3 números de $A$ que sumados dan $0$ }
+	\emph{$\backslash\backslash$Marcamos una variable bandera de encontrado con valor 0}\;
+	\emph{$encontrado:=0$}\;
+	 \For{$i :=  0$ to $n-1$ step $1$}{
+		\emph{$\backslash\backslash$Para cada elemento $i$ reiniciamos los indices de búsqueda}\;
+		\emph{$j:=0$}\;
+		\emph{$k:=n-1$}\;
+		\emph{$\backslash\backslash$Asignamos el valor a buscar como el inverso aditivo del elemento $i$ en $A$}\;
+		\emph{$valor\_buscado:=-1 \times A[i]$}\;
+		\While{$j<k$}{
+			\emph{$\backslash\backslash$Si $j$ es igual a $i$ incrementamos $j$}\;
+			\If{$i=j$}{\emph{$j:=j+1$}\;}
+		    \emph{$\backslash\backslash$Si $k$ es igual a $i$ decrementamos $k$}\;
+			\If{$i=k$}{\emph{$k:=k-1$}\;}
+			\emph{$\backslash\backslash$Validamos que $k$ se menor a $n$ y que $j$ sea menor a $k$}\;
+			\If{$j>=k$ or $k>=n$}{\emph{break}\;}
+			\emph{$suma\_actual:= A[j] + A[k]$}\;
+			\emph{$\backslash\backslash$Validamos que la suma sea el valor buscado}\;
+			\eIf{$suma\_actual=valor\_buscado$}{
+				\emph{$\backslash\backslash$Marcamos la variable bandera y terminamos el ciclo While}\;
+				\emph{$encontrado:=1$}\;
+				\emph{break}\;
+			}{
+				\emph{$\backslash\backslash$Si la suma es menor  aumentamos $j$ o disminuimos $k$ si es mayor}\;
+				\eIf{$suma\_actual<valor\_buscado$}{
+					$j:=j+1$
+				}{
+					$k:=k-1$
+				}
+			}
+		}
+	\emph{$\backslash\backslash$Si la variable bandera esta marcada terminamos el ciclo For}\;
+		\If{$encontrado=1$}{
+		\emph{break}\;
+		}
+ 	}
+	
+	\emph{Reportar los indices $i$, $j$ y $k$ si se encontró}\;
+	\caption{Algoritmo para el problema de 3-SUM}
+\end{algorithm}
+\subsection{Complejidad}
+Prueba en detalle que es correcto y que su complejidad es en realidad $O(n^{2})$.
+\paragraph{Demostración}
+\paragraph{}
+Primero demostremos que el algoritmo termina:\\
+El algoritmo termina porque en el ciclo \textit{while} interno en cada iteración se incrementa el valor de $j$ o decrementa el valor de $k$, si es que \textit{suma\_actual} no es igual a \textit{valor\_buscado}, y cada valor de $A$ es referenciado a lo más una vez, ya sea por $j$ o por $k$. Entonces el \textit{while} interno a lo más puede tener $n$ iteraciones, que es haber hecho alguna combinación de incrementos a $j$ y decrementos a $k$ tal que se referenciaron todos los valores en $A$, y como el ciclo \textit{while} se manda a llamar una vez por cada elemento en $A$ serían $n$ veces que se corre el ciclo \textit{while}. Finalmente como se realiza $n$ veces el ciclo que a lo mas hace $n$ iteraciones se llega a que el algoritmo termina después de $n^{2}$ operaciones por lo tanto es de complejidad $O(n^{2})$.
+\paragraph{}Ahora demostremos que el algoritmo da la respuesta:\\
+El ciclo \textit{for} recorrerá cada indice $i$, de los $n$ posibles, buscando si hay una pareja $j$ y $k$ distintos entre sí y distintos a $i$ tales que cumplan que sumados sean igual al inverso aditivo del elemento en el índice $i$ ($valor\_buscado$), la búsqueda de esta pareja $j$ y $k$ se hace en el ciclo \textit{while} en el cual se mantendrá la siguiente invariante en cada iteración no-final, $suma\_actual$ es mayor o menor a $valor\_buscado$.\\
+Si en la iteración $suma\_actual$ es igual a $valor\_buscado$ entonces es una etapa final por que termina el algoritmo y reporta los valores de los indices $i$, $j$ y $k$.\\
+Ahora seguimos en una iteración  no-final donde $suma\_actual$ es menor a $valor\_buscado$, debemos incrementar $j$ lo que hará crecer $suma\_actual$ puesto que los elementos en $A$ estan ordenados. Observemos que, si incrementamos $k$ también aumentaría  $suma\_actual$, sin embargo todos los indices mayores a $k$ ya fueron analizados y de haber pertenecido a la respuesta lo habríamos tomado junto con otro índice menor o igual a $j$, y como no fue así, no tiene sentido que si $suma\_actual$ es menor a $valor\_buscado$, debemos incrementar $k$.
+\\
+\pagebreak
+\\
+En otro caso en una iteración  no-final donde $suma\_actual$ es mayor a $valor\_buscado$, debemos decrementar $k$ lo que hará disminuir $suma\_actual$. Por una razón similar al punto anterior no tiene sentido decrementar $j$ por que esos indices ya fueron considerados y saltados.\\
+Si en el \textit{while} se puede buscar una pareja de indices tales que la suma de los elementos a los que hacen referencia den un valor determinado, podemos decir que como esa búsqueda se hace por el inverso aditivo de cada elemento en $A$ aseguramos que de existir dicha pareja de indices el algoritmo termina con una pareja de indices $j$ y $k$ tales que la suma de los elementos a los que hacen referencia es igual al inverso aditivo del elemento referenciado por $i$ y por lo tanto si se suman esos 3 elementos tendríamos como resultado $0$ que es lo que se busca en la definición del problema. 
+\paragraph{Finalmente} como el algoritmo da la respuesta y termina demostramos entonces que es correcto y tiene una complejidad de $O(n^{2})$.
+\section{Ejercicio 6.}
+\paragraph{}En la implementación que revisamos del algoritmo de Gale-Shapley se muestra un algoritmo para invertir la lista de preferencia de un estudiante. Demuestra que el algoritmo propuesto tiene complejidad $O(n)$ donde n es el número de hospitales.
+\paragraph{Demostración} El algoritmo al que nos referimos es:\\
+
+\begin{algorithm}[H]\footnotesize
+	\SetAlgoLined
+	\For{$i :=  1$ to $n$}{
+		\emph{$rank[pref[i]]:=i$}\;
+	}
+	\caption{Algoritmo para invertir la lista de preferencia de un estudiante.}
+\end{algorithm}
+\paragraph{} El algoritmo solo hace uso de un ciclo \textit{for} (por cada estudiante), si decimos que el acceso a los arreglos y la asignación son una operación elemental que este en O(1) podemos decir entonces que el número de operaciones estará dado por el número de iteraciones en el ciclo \textit{for}. En el ciclo se recorrerá por todos los valores entre $1$ y $n$ así pues decimos que hará $n$ operaciones elementales y por lo tanto es de orden $O(n)$.
+
+\end{document}
