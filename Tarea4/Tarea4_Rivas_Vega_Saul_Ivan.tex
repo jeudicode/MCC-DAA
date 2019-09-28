@@ -10,7 +10,8 @@
 \graphicspath{ {./images/} }
 \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage{algorithm2e}
+\usepackage{subcaption}
+\usepackage[linesnumbered]{algorithm2e}
 \usepackage{tikz}
 \usetikzlibrary{positioning, fit}
 \usetikzlibrary{babel}
@@ -127,7 +128,7 @@
 			\end{tikzpicture}
 		\end{center}
 		Donde $z = 2n$, en $G_0$ $z=6$.\\
-		Ahora para cualquier otro $G_i$ con $i>0$ se agregara una arista del último nodo de $G_{i-1}$, el cual es $v_{i+2}$, a un nuevo nodo $v_{i + 3}$ con peso 1: 
+		Ahora para cualquier otro $G_i$ con $i>0$ se agregará una arista del último nodo de $G_{i-1}$, el cual es $v_{i+2}$, a un nuevo nodo $v_{i + 3}$ con peso 1: 
 				\begin{center}
 			\begin{tikzpicture}[roundnode/.style={draw,shape=circle,fill=black!40,minimum size=1mm}]
 			\tikz
@@ -167,4 +168,207 @@
 		\draw[->] (v1) -- (v3) node[midway,below] {1};
 		\end{tikzpicture}
 	\end{center}
+	\begin{algorithm}[H]\footnotesize
+	\SetAlgoLined
+	Inicializar $d(v)=infinito$, para toda $v \in G$\;
+	Asignar $d(s)=0$\;
+	\For{i desde 1 hasta (n-1)}{
+		\ForEach{Arista $(u,v,peso) \in E$}{ 
+				\If{$d(u) + peso < d(v)$}{\emph{$d(v) := d(u) + peso$}\;}
+		}
+	}
+	\caption{Bellman-Ford.}
+	\end{algorithm}
+	\paragraph{Demostración} Sea $v_1$ el nodo $s$ para el algoritmo.\\
+	Al inicializar las distancias como en las lineas 1 y 2 tenemos:
+	\begin{itemize}
+		\item $d(v_1)=0$. 
+		\item $d(v_2)=infinito$.
+		\item $d(v_3)=infinito$.
+	\end{itemize}
+	En la primera ejecución del ciclo en la linea 3 se prueban las siguientes aristas con las correspondientes evaluaciones:
+	\begin{itemize}
+		\item Arista$(v_1, v_2, 6)$.
+		\begin{itemize}
+				\item $d(v_1) + 6 < d(v_2)$.
+				\item $0 + 6 < infinito$.
+				\item true. Asignamos $d(v_2) := 6$
+			\end{itemize}
+	\item La arista $(v_1, v_3, 1)$ pudo haber sido evaluada en dos casos:
+	\begin{enumerate}
+		\item Cuando $d(v_3)=infinito - 6$, es decir evaluamos primero a la arista $(v_2, v_3, -6)$.
+		\begin{itemize}
+			\item $d(v_1) + 1 < d(v_3)$.
+			\item $1 < infinito-6$.
+			\item true. Asignamos $d(v_3) := 1$
+		\end{itemize}
+		\item Cuando $d(v_3)=infinito$, es decir todavía no evaluamos a la arista $(v_2, v_3, -6)$.
+		\begin{itemize}
+			\item $d(v_1) + 1 < d(v_3)$.
+			\item $0 + 1 < infinito$.
+			\item true. Asignamos $d(v_3) := 1$
+		\end{itemize}
+		
+	\end{enumerate}
+		\item La arista $(v_2, v_3, -6)$ pudo haber sido evaluada en los mismos dos casos:
+		\begin{enumerate}
+			 \item Cuando $d(v_2)=infinito$, es decir todavía no evaluamos a la arista $(v_1, v_2, 6)$.
+			 \begin{itemize}
+			 	\item $d(v_2) + (-6) < d(v_3)$.
+			 	\item $infinito - 6 < infinito$.
+			 	\item true. Asignamos $d(v_3) := infinito - 6$
+			 \end{itemize}
+			 \item Cuando $d(v_2)=6$, es decir evaluamos primero a la arista $(v_1, v_2, 6)$.
+			 \begin{itemize}
+			 	\item $d(v_2) + (-6) < d(v_3)$.
+			 	\item $6 - 6 < infinito$.
+			 	\item true. Asignamos $d(v_3) := 0$
+			 \end{itemize}
+		\end{enumerate}
+	\end{itemize}
+	De haber sido el caso número 2, la distancia ya es correcta para $v_3$ siendo $d(v_3)=0$, sin embargo esa distancia se alcanza en la segunda iteración para el caso número 1:
+	\begin{itemize}
+	\item La arista $(v_2, v_3, -6)$ tomando el caso numero 1 de la iteración anterior se realiza la siguiente evaluación:
+			\begin{itemize}
+				\item $d(v_2) + (-6) < d(v_3)$.
+				\item $6 - 6 < 1$.
+				\item true. Asignamos $d(v) := 0$
+			\end{itemize}
+	\end{itemize}
+Finalmente se asegura que Bellman-Ford llega a la distancia correcta de $v_3$ siendo $d(v_3)=1$, a diferencia de Dijkstra que reportaría erróneamente $d(v_3)=1$ como se muestra en la demostración del ejercicio 2.1.
+\section{Ejercicio 3}
+\subsection{De acuerdo con el algoritmo de Dijkstra que revisamos en clase, para cada $n\in \mathbb{N}$ con $n>2$, presenta una familia de gráfircas de $n$ vértices con pesos positivos y negativos y sin ciclos dirigidos de longitud negativa para la cual se cumple que si $G$ es una gráfica de la familia, el algoritmo de Dijkstra no falla en encontrar el camino más corto entre dos vértices de $G$. Prueba que en efecto el algoritmo encuentra los caminos más cortos.}
+\paragraph{}
+	Para $G_0$ se tiene la siguiente gráfica:
+\begin{center}
+	\begin{tikzpicture}[roundnode/.style={draw,shape=circle,fill=black!40,minimum size=1mm}]
+	\tikz
+	%Nodes
+	\node[roundnode,label={north west:$v_1$}]      (v1)                     {};
+	\end{tikzpicture}
+\end{center}
+Es decir un solo nodo $v_1$. Ahora para cualquier otro $G_i$ con $i>0$ se agregará un nuevo nodo $v_{i+1}$ y una arista de $v_{i} $ a $v_{i+1}$ con peso $w_i$ positivo, negativo o igual a 0. 
+\begin{center}
+	\begin{tikzpicture}[roundnode/.style={draw,shape=circle,fill=black!40,minimum size=1mm}]
+	\tikz
+	%Nodes
+	\node[roundnode,label={north :$v_1$}]      (v1)                     {};
+	\node[roundnode,label={north :$v_2$}]      (v2)       [ right=of v1] {};
+	\node[label={$...$}]      (v3)       [right=of v2] {};
+	\node[roundnode,label={north :$v_{i}$}]      (v4)       [right=of v3] {};
+	\node[roundnode,label={north :$v_{i+1}$}]      (v5)       [right=of v4] {};
+	%Lines
+	\draw[->] (v1) -- (v2) node[midway,above] {$w_1$};
+	\draw[->] (v2) -- (v3) node[midway,above] {$w_2$};
+	\draw[->] (v3) -- (v4) node[midway,above] {$w_{i-1}$};
+	\draw[->] (v4) -- (v5) node[midway,above] {$w_{i}$};
+	\end{tikzpicture}
+\end{center}
+	\paragraph{Demostración} En este caso cualquier gráfica $G_i$ miembro de la familia tendrá $i$ aristas así como $i+1$ vértices, lo que resulta en que solo exista un camino a seguir estando en cualquier vértice $v\in G_i$. En cualquier ejecución de Dijkstra tomando  cualquier vértice $v$ como vértice inicial $s$, se recorrerá ese único camino que empieza en $s$. Para cualquier vértice en el conjunto de vértices que es posible explorar desde $s$, se encontrará el camino mínimo pues es único y se recorren todos los vértices sin explorar que son alcanzables desde $s$. Finalmente sin importar que se tengan pesos positivos, negativos o iguales a 0, si $G$ es miembro de la familia descrita, el algoritmo de Dijkstra no falla en encontrar el camino más corto entre dos vértices de $G$.
+\section{Ejercicio 4. }
+\subsection{Considera la estructura de datos de cola de prioridad, implementada con heaps binarios, y el arreglo $A=(10, 12, 1, 14, 6, 5, 8, 15, 3, 9, 7, 4, 11, 13, 2)$. Explica cómo construyes una cola de prioridad que tenga los elementos de A (tienes que dar la construcción del árbol binario); no puedes ordenar el arreglo de entrada antes de crear la cola. Escribe explícitamente la cola resultante.}
+\paragraph{} La cola de prioridad se construye agregando cada elemento como la siguiente hoja en el árbol binario, sin embargo en caso que sea menor a su padre cambiará lugar con su padre hasta que su padre no sea mayor o termine siendo la raíz.
+\begin{figure}
+	\begin{subfigure}{.25\textwidth}
+		\centering
+		\includegraphics[width=.4\linewidth]{hp001}
+		\caption{Elemento inicial 10.}
+		\label{fig:sfig1}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics[width=1.4\linewidth]{hp002}
+		\caption{Se agrega 12 y como es mayor solo se agrega como hoja.}
+		\label{fig:sfig2}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics[width=1.8\linewidth]{hp003}
+		\caption{1 es menor que todos los elementos así que se agrega como hoja, pero sube hasta la raíz.}
+		\label{fig:sfig3}
+	\end{subfigure}
+	\begin{subfigure}{.6\textwidth}
+		\centering
+		\includegraphics[width=1.04\linewidth]{hp004}
+		\caption{14 es mayor que todos los otros elementos, se agrega como hoja.}
+		\label{fig:sfig4}
+	\end{subfigure}
+	\begin{subfigure}{.6\textwidth}
+		\centering
+		\includegraphics[width=1.04\linewidth]{hp005}
+		\caption{6 se agrega como hoja pero es menor a 12, así que sube.}
+		\label{fig:sfig5}
+	\end{subfigure}
+\begin{subfigure}{.6\textwidth}
+	\centering
+	\includegraphics[width=1.04\linewidth]{hp006}
+	\caption{Se agrega 5 como hoja pero es menor a 10 así que sube.}
+	\label{fig:sfig6}
+\end{subfigure}
+\begin{subfigure}{.6\textwidth}
+	\centering
+	\includegraphics[width=1.04\linewidth]{hp007}
+	\caption{Se agrega 8 como hoja y como es mayor a 5 se queda así.}
+	\label{fig:sfig7}
+\end{subfigure}
+\begin{subfigure}{.6\textwidth}
+	\centering
+	\includegraphics[width=0.95\linewidth]{hp008}
+	\caption{Se agrega 15 como hoja y como es el mayor, se queda así.}
+	\label{fig:sfig8}
+\end{subfigure}
+\begin{subfigure}{.6\textwidth}
+	\centering
+	\includegraphics[width=1.04\linewidth]{hp009}
+	\caption{Se agrega 3 como hoja y como es menor a 14 y a 6, sube dos niveles.}
+	\label{fig:sfig9}
+\end{subfigure}
+	\caption{Árboles binarios en las primeras 9 inserciones.}
+	\label{fig:fig}
+\end{figure}
+\begin{figure}
+	\begin{subfigure}{.7\textwidth}
+		\centering
+		\includegraphics[width=1.1\linewidth]{hp010}
+		\caption{Se agrega 9 como hoja y como es menor a 12, sube.}
+		\label{fig:sfig10}
+	\end{subfigure}
+\begin{subfigure}{.7\textwidth}
+	\centering
+	\includegraphics[width=1.1\linewidth]{hp011}
+	\caption{Se agrega 7 como hoja y como es menor a 9, sube.}
+	\label{fig:sfig11}
+\end{subfigure}
+\begin{subfigure}{.7\textwidth}
+	\centering
+	\includegraphics[width=1.1\linewidth]{hp012}
+	\caption{Se agrega 4 como hoja y como es menor a 10 y 5, sube dos niveles.}
+	\label{fig:sfig12}
+\end{subfigure}
+\begin{subfigure}{.7\textwidth}
+	\centering
+	\includegraphics[width=1.1\linewidth]{hp013}
+	\caption{Se agrega 11 como hoja y como es mayor a 5, se queda así}
+	\label{fig:sfig13}
+\end{subfigure}
+	\caption{Árboles binarios en las siguientes 4 inserciones.}
+	\label{fig:fig_}
+\end{figure}
+\begin{figure}
+\begin{subfigure}{.9\textwidth}
+	\centering
+	\includegraphics[width=1.2\linewidth]{hp014}
+	\caption{Se agrega 13 y como es mayor a 8 así se queda. }
+	\label{fig:sfig14}
+\end{subfigure}
+\begin{subfigure}{.9\textwidth}
+	\centering
+	\includegraphics[width=1.2\linewidth]{hp015}
+	\caption{Se agrega 2 como hoja y como es mayor a 8 y a 4, sube dos niveles.}
+	\label{fig:sfig15}
+\end{subfigure}
+	\caption{Árboles binarios en las últimas 2 inserciones.}
+	\label{fig:fig__}
+\end{figure}
+
 \end{document}
