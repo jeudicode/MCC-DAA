@@ -12,9 +12,16 @@
 \usepackage{amsmath}
 \usepackage{subcaption}
 \usepackage[linesnumbered]{algorithm2e}
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
 \usepackage{tikz}
 \usetikzlibrary{positioning, fit}
 \usetikzlibrary{babel}
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{5.5ex plus 1ex minus .2ex}{.3ex plus .1ex}
+\titlespacing*{\subsection}
+{0pt}{5.5ex plus 1ex minus .2ex}{2.3ex plus .1ex}
 
 \title{Tarea 4}
 
@@ -232,10 +239,10 @@
 			\begin{itemize}
 				\item $d(v_2) + (-6) < d(v_3)$.
 				\item $6 - 6 < 1$.
-				\item true. Asignamos $d(v) := 0$
+				\item true. Asignamos $d(v_3) := 0$
 			\end{itemize}
 	\end{itemize}
-Finalmente se asegura que Bellman-Ford llega a la distancia correcta de $v_3$ siendo $d(v_3)=1$, a diferencia de Dijkstra que reportaría erróneamente $d(v_3)=1$ como se muestra en la demostración del ejercicio 2.1.
+Finalmente se asegura que Bellman-Ford llega a la distancia correcta de $v_3$ siendo $d(v_3)=0$, a diferencia de Dijkstra que reportaría erróneamente $d(v_3)=1$ como se muestra en la demostración del ejercicio 2.1.
 \section{Ejercicio 3}
 \subsection{De acuerdo con el algoritmo de Dijkstra que revisamos en clase, para cada $n\in \mathbb{N}$ con $n>2$, presenta una familia de gráfircas de $n$ vértices con pesos positivos y negativos y sin ciclos dirigidos de longitud negativa para la cual se cumple que si $G$ es una gráfica de la familia, el algoritmo de Dijkstra no falla en encontrar el camino más corto entre dos vértices de $G$. Prueba que en efecto el algoritmo encuentra los caminos más cortos.}
 \paragraph{}
@@ -370,5 +377,165 @@ Es decir un solo nodo $v_1$. Ahora para cualquier otro $G_i$ con $i>0$ se agrega
 	\caption{Árboles binarios en las últimas 2 inserciones.}
 	\label{fig:fig__}
 \end{figure}
-
+\pagebreak
+\section{Ejercicio 5.}
+\subsection{Demuestra en detalle y con una figura, por qué el algoritmo de Dijkstra es correcto.}
+ \paragraph{}
+	\begin{algorithm}[H]\footnotesize
+	\KwResult{Calcular las distancias mínimas para todos los nodos $v$ de una gráfica $G$  a partir de un nodo $s \in G$.}
+	\SetAlgoLined
+	Inicializar $d(v):=infinito$, para toda $v \in G$\;
+	Asignar $d(s):=0$\;
+	Inicializar el conjunto de nodos $S:=\{s\}$\;
+	\While{exista un nodo $v\notin S$ y que tenga una arista desde algún nodo $u\in S$}{
+		Escogemos el nodo $v$ tal que  $v\notin S$ y que tenga una arista desde algún nodo $u\in S$
+		y que tenga la mínima estimación de distancia, es decir que minimice: $d(u) + peso_{(u, v)}$\;
+		\tcc{Es la suma entre la distancia mínima de $u$ mas el peso de la arista que conecta $u$ y a $v$.}
+		 \tcp{Ahora, asignamos la mínima estimación de distancia  a $v$.}
+		$d(v):=d(u) + peso_{(u, v)}$\;
+		Agregamos $v$ al conjunto $S$\;
+	}
+	\caption{Dijkstra.}
+\end{algorithm}
+\begin{figure}[h]
+	\begin{center}
+	\begin{tikzpicture}[roundbknode/.style={draw,shape=circle,fill=black!40,minimum size=1mm}, roundbunode/.style={draw,shape=circle,fill=blue!40,minimum size=1mm}]
+	\tikz
+	%Nodes
+	\node[roundbunode,label={north west:$v_1$}]      (s)                     {};
+	\node[label={...}, color=orange]      (v2)       [above right=of v1] {};
+	\node[label={$...$}]      (v3)       [below right=of v1] {};
+	\node[roundbunode,label={north east:$u$}]      (v4)       [right=of v3] {};
+	\node[roundbunode,label={north:$x$}]      (v5)       [right=of v2] {};
+	\node[roundbknode,label={north east:$v$}]      (v6)       [right=of v4] {};
+	\node[roundbknode,label={north east:$y$}]      (v7)       [right=of v5] {};
+	%Lines
+	\draw[color=orange, ->] (v1) -- (v2) node[midway,above] {};
+	\draw[->] (v1) -- (v3) node[midway,below] {};
+	\draw[->] (v3) -- (v4) node[midway,below] {};
+	\draw[color=orange, ->] (v2) -- (v5) node[midway,below] {};
+	\draw[->] (v4) -- (v6) node[midway,below] {};
+	\draw[color=orange, ->] (v5) -- (v7) node[midway,below] {$e$};
+	\draw[color=orange, dashed, ->] (v7) -- (v6) node[midway, right] {$P'$};
+	\end{tikzpicture}
+	\caption{Gráfica demo, con nodos del conjunto $S$ en color azul.}
+	\label{fig4}
+\end{center}
+\end{figure}
+\paragraph{Demostración de que el algoritmo termina.}
+El algoritmo ejecuta cada iteración si existe algún nodo $v$ sin explorar y que tiene una arista desde $u$, que es un nodo en $S$ y ya esta explorado. En cada iteración al nodo $v$ con mínima estimación de distancia se agrega al conjunto $S$ y no vuelve a ser considerado en la siguiente iteración. Por lo tanto en cuanto todos los nodos estén en $S$ o no puedan ser explorados desde algún nodo en $S$ terminaran las iteraciones. Como a lo mas todos los nodos pueden ser explorados desde el nodo $s$, existirán a lo más $n - 1$ iteraciones del ciclo en la línea 4.
+ \paragraph{Demostración de correctitud.} Por inducción:\\
+ \textbf{Invariante:} Si el nodo $u$ esta en el conjunto $S$, entonces $d(u)$ es la mínima distancia desde $s$ a $u$.\\
+  \textbf{Caso Base:} $|S|=1$, al iniciar el algoritmo $S=\{s\}$ y $d(s) =0$, lo cual es correcto.\\
+  \textbf{Hipótesis Inductiva:} Asumir verdadero para $|S|\geq 1$.\\
+  Sea $v$ el siguiente nodo a ser agregado a $S$, eso quiere decir que su estimación de distancia fue la mínima, es decir que la distancia del nodo  $u\in S$ que llega a $v$ mas el peso de la arista $(u,v)$ es menor o igual a cualquier otra distancia de un nodo $x\in S$ mas el peso de su arista a cualquier otro nodo $y\notin S$.\\
+  Le sigue que mostremos que esta estimación de distancia es de hecho la distancia mínima desde $s$ a $v$. Como se muestra en la figura \ref{fig4} el camino con las aristas en negritas es el camino actual a $v$ que pasa por $u$, este es el camino mínimo pues de existir otro camino $P'$, que en la figura esta de color naranja, tiene que pasar por algún nodo $x\in S$. En el momento de agregar $v$ a $S$, $x$ fue revisado en la iteración pero su distancia mas el peso de su arista a cualquier otro nodo $y\notin S$ no fue menor a la estimación de $v$, pues se escogió la estimación de $v$ como la mínima. Al no existir otro camino con una estimación de distancia estrictamente menor, entonces al ser agregado algún nodo $v$ a $S$,  $d(v)$ es la mínima distancia entre $s$ y $v$.
+ \section{Ejercicio 6}
+ \subsection{Ofrece un algoritmo que, dada una cola de prioridad implementada con heaps binarios y con $n$ elementos, elimine el elemento $i$-ésimo de la cola. Analiza su complejidad y demuestra que en efecto tu algoritmo es correcto y tiene la complejidad que presumes.}
+ \paragraph{} 
+ \begin{algorithm}[H]
+ 	\SetAlgoLined
+ 	\KwData{Índice $i$ del elemento a eliminar}
+		Asignamos el nuevo valor en $i$ como el menor valor entre el del hijo izquierdo y el hijo derecho, o VACÍO$\backslash$NULL en caso de que no tenga ningún hijo.\;
+ 		\eIf{tiene hijo izquierdo y el valor del hijo izquierdo fue el menor}{
+ 				llamar REMOVER($indice\_hijo\_izquierdo$)\;
+ 		}{
+ 		\If{tiene hijo derecho y el valor del hijo derecho fue el menor}{
+ 			llamar REMOVER($indice\_hijo\_derecho$)\;
+ 		}
+ 	}
+ 	\caption{Algoritmo REMOVER para eliminar el elemento $i$-ésimo de la cola de prioridad}
+ \end{algorithm}
+\paragraph{Complejidad} El algoritmo en cada llamada solo realiza una comparación entre los valores entre los hijos en el heap binario del $i$-ésimo elemento, y selecciona el menor entre los dos, o el valor único si solo tiene un hijo, o VACÍO$\backslash$NULL si no tiene hijos, que es el caso que el elemento a eliminar es una hoja y no habrá quien lo reemplace. La comparación y revisiones para ver si tiene hijos dentro de una llamada podemos considerarlas como operaciones constantes, sin embargo se multiplicará por el número de llamadas. Cada llamada recursiva se realiza si el elemento en el índice $i$ a remover tiene al menos un hijo, y se realiza una llamada en el hijo izquierdo o derecho. Entonces el número de llamadas corresponde a la cantidad de niveles en el heap binario a partir del índice $i$. En el peor de los casos donde el elemento a remover es la raíz y se recorren todos los niveles del heap binario se habrían hecho $log_2(n)$ llamadas pues es la altura de un heap binario balanceado de $n$ elementos.\\ Finalmente se tendría que con $log_2(n)$ llamadas y con operaciones constantes se tendría una complejidad de orden $O(log_2(n))$.
+\paragraph{Correctitud} El algoritmo termina pues en el análisis de complejidad se llega que a lo más se realizarían $log_2(n)$ llamadas y una serie de operaciones constantes en cada llamada.\\
+Ahora al terminar el algoritmo termina con un heap binario $A$ con los mismos elementos con excepción del elemento que se eliminó y estaba en la posición $i$. Lo que hace el algoritmo es reemplazar ese elemento con el menor de sus hijos si tiene alguno. La relación del padre de $i$ con $i$ es: \\
+$A[padre(i)] \leq A[i]$\\
+Y la relación de $i$ con sus hijos es:\\
+$A[i] \leq A[hijo\_izq(i)]$ y  $A[i] \leq A[hijo\_der(i)]$\\
+Entonces se cumple que:\\
+$A[padre(i)] \leq A[hijo\_der(i)]$ y $A[padre(i)] \leq A[hijo\_izq(i)]$\\
+Así que las invariantes de las  relaciones de orden se mantienen al reemplazar el valor en $i$ con alguno de sus hijos, y ahora al seleccionar al menor de ambos se cumplirá recursivamente a sus hijos.
+Por lo tanto el orden en el heap binario se mantiene hasta llegar a una hoja y no quede mas que colocar un valor NULL. Finalmente se o termina con un heap binario $A$ con los mismos elementos con excepción del elemento que se eliminó y estaba en la posición $i$.
+\pagebreak
+\section{Ejercicio 7.}
+\subsection{Sea $G=(V,E)$ una gráfica. Demuestra que cualesquiera dos de las siguientes propiedades implican la tercera.}
+\begin{enumerate}
+	\item $G$ es conexa.
+	\item $G$ no tiene ciclos.
+	\item $|E| = |V| - 1$.
+\end{enumerate}
+\paragraph{Demostremos que $1$ y $3$ implican $2$.}
+Supongamos a $G$ una gráfica que cumple con $1$, y $3$. La gráfica $G$ tiene $n$ nodos, es decir $|V| = n$. En un ciclo de $z$ nodos se requieren $z$ aristas, pues para que el camino que comprende al ciclo se complete el último nodo debe tener una arista al primero, así los $z$ nodos tienen una arista. Pero solo tenemos $n - 1$ aristas por la propiedad $3$, la única forma de tener un ciclo es conectando una cantidad $x<n$ de nodos con $x$ aristas, pero dejarán sin arista a algún nodo, dejándolo  desconectado, pero eso no es posible por la propiedad $1$. Finalmente no es posible formar un ciclo en $G$ manteniendo $|V| - 1$ aristas y manteniendo a $G$ conexo.
+\paragraph{Demostremos que $2$ y $3$ implican $1$.}
+Supongamos a $G$ una gráfica que cumple con $1$, y $3$. Dejemos desconectado a por lo menos un nodo $u$ de $G$, eso nos dejaría con $n-1$ nodos conectados con $n-1$ aristas. Ahora en esos $n-1$ nodos para estar conectados, todos los nodos deben tener al menos una arista que lo conecte a otro de los $n-1$ nodos, como tienen $n-1$ aristas, es una arista para cada uno. Le sigue que como es conexo si exploramos desde uno de esos $n-1$ nodos llegaremos a todos los otros $n-1$ nodos, pues en nuestra suposición inicial $u$ es el único nodo desconectado. Pero al llegar al nodo $n-1$ en el camino, ese nodo también tiene una arista que nos llevará a otro de los $n-1$ nodos que ya exploramos, siendo entonces un ciclo. Por lo tanto si tenemos $n-1$ aristas y $n$ nodos, no podemos evitar tener un ciclo al dejar al menos un nodo desconectado. Finalmente si tenemos $n-1$ aristas y no tenemos ciclos entonces $G$ es conexa.
+\pagebreak
+\paragraph{Demostremos que $1$ y $2$ implican $3$.}
+Supongamos a $G$ una gráfica que cumple con $1$, y $2$. Tomando en cuenta las observaciones de la demostración anterior, sabemos que si tenemos $n$ nodos conectados y $n$ aristas tendremos un ciclo. Así pues debemos tener menos que $n$ aristas para evitar formar un ciclo al ser conexa la gráfica. Probemos que podemos construir una gráfica conexa con $n$ nodos con $n-1$ aristas para cualquier $n>1$. Caso para $n=1$, con un solo nodo, es conexa con $0$ aristas. Ahora para  construir cualquier otra gráfica conexa podemos agregar un nuevo nodo con una nueva arista a ese nodo inicial o a cualquier otro nodo que pueda llegar al nodo inicial. Cualquier gráfica conexa que construyamos de esa forma  tendrá $n-1$ aristas, pues con cada nodo nuevo se agrega una arista, con excepción del nodo inicial. Probemos que no podemos construir una gráfica conexa con menos de $n-1$ aristas, el valor mas grande que es menor a $n-1$ es $n-2$. Si tomamos el caso con $n=2$ tendremos 0 aristas, dejando 2 nodos desconectados, y agregando una arista nueva y un nodo nuevo para $n>2$ dejará al menos un nodo desconectado.\\
+Por lo tanto si debemos tener menos que $n$ aristas para evitar tener ciclos, no podemos tener menos de $n-2$ aristas pues dejaría de ser conexa, y con $n-1$ aristas si podemos tener  formar una gráfica conexa llegamos a que solo podemos tener $n-1$ aristas.
+\section{Ejercicio 8.}
+\subsection{El resumen se anexa al final del documento para cumplir con las especificaciones de formato.}
+\pagebreak
+\section{Ejercicio 9.}
+\subsection{Para resolver el problema del cálculo de distancias entre todos los vértices de una gráfica dirigida $G=(V,E)$ con pesos en las aristas positivos o negativos, se pueden utilizar los siguientes algoritmos con respectivas complejidades:}
+ \begin{itemize}
+\item Algoritmo de Ford $O(|V|^{2}|E|)$
+\item Algoritmo de Floyd $O(|V|^{3})$
+\item Algoritmo de Johnson $O(|V|^{2}log(|V|) + |V| \cdot |E|)$ 
+ \end{itemize}
+Determina qué algoritmo conviene usar como función de $|E|$.
+\paragraph{} Si el comportamiento de las funciones serán analizadas en función de $|E|$, es útil revisar el caso cuando $|E|$ tiene el mayor valor posible con $|V|$ nodos. El mayor valor es $\frac{|V|\cdot(|V| - 1)}{2}$ el cual es un valor cercano a $|V|^{2}$, cabe mencionar que en gráficas dirigidas donde la arista $(u, v)$ no necesariamente es igual a la arista $(v, u)$ y tenga aristas de la forma $(u, u)$, el valor será directamente $|V|^{2}$, entonces las complejidades para cada algoritmo serán cercanas a:\\
+ \begin{itemize}
+	\item Algoritmo de Ford $\approx O(|V|^{2}\cdot|V|^{2}) \approx O(|V|^{4})$
+	\item Algoritmo de Floyd $O(|V|^{3})$
+	\item Algoritmo de Johnson $\approx O(|V|^{2}log(|V|) + |V| \cdot|V|^{2}) \approx O(|V|^{2}log|V| + |V|^{3}) \approx O(|V|^{3})$ 
+\end{itemize}
+Es útil revisar el caso cuando $|E|$ tiene el menor valor posible con $|V|$ nodos. Como no hay restricciones de ser conexa $G$ el valor de $|E|$ puede ser $0$, entonces las complejidades para cada algoritmo serán cercanas a:\\
+\begin{itemize}
+	\item Algoritmo de Ford $\approx O(|V|^{2}\cdot 0) \approx O(1)$
+	\item Algoritmo de Floyd $O(|V|^{3})$
+	\item Algoritmo de Johnson $\approx O(|V|^{2}log(|V|) + |V| \cdot0) \approx O(|V|^{2}log|V|)$
+\end{itemize}
+Revisemos el caso cuando $|E| = |V|$, entonces las complejidades para cada algoritmo serán cercanas a:\\
+\begin{itemize}
+	\item Algoritmo de Ford $\approx O(|V|^{2}\cdot |V|) \approx O(|V|^{3})$
+	\item Algoritmo de Floyd $O(|V|^{3})$
+	\item Algoritmo de Johnson $\approx O(|V|^{2}log(|V|) + |V| \cdot|V|) \approx O(|V|^{2}log|V| + |V|^{2})$
+\end{itemize}
+El algoritmo que mas conviene en función de $|E|$ es el algoritmo de Johnson pues no importa que tan grande pueda ser $|E|$, el algoritmo tendrá como complejidad aproximada $O(|V|^{3})$ que es igual a Floyd y menor a Ford. Además de que si ahora consideramos menores valores de $|E|$ el algoritmo de Johnson tiene la mejor función de complejidad entre los 3, es decir para todos los valores de $|E|$ que cumplan $|V|^{2} > |E| \geq |V|$. En los únicos valores donde conviene usar a Ford en vez de Johnson es para valores de $|E|$ que cumplan $log(|V|) > |E| \geq 0$, pues Johnson no baja de $O(|V|^{2}log(|V|))$ aún con $|E| = 0$.
+\section{Ejercicio 10.}
+\subsection{Prueba que agregar una constante a todos los pesos y que multiplicar por una constante positiva no altera el conjunto de árboles generadores mínimos de una gráfica conexa con pesos dada.}
+\paragraph{Demostración} Tomemos a cualquier árbol generador $MST_x$ de una gráfica $G$ con $n$ nodos, no necesariamente mínimo, y revisemos el cálculo de su peso total:
+\begin{equation}
+peso\_original(MST_x) = \sum_{i=1}^{n - 1} peso\_arista_i 
+\end{equation}
+La ecuación se refiere a que el peso total de cualquier árbol generador $MST_x$  es la suma de los pesos de las aristas que lo componen.\\
+Ahora tomemos la primera transformación que es agregar una constante a todos los pesos. La ecuación 1 queda:
+\begin{equation}
+\begin{split}
+peso\_suma\_constante(MST_x) & = \sum_{i=1}^{n - 1} (peso\_arista_i + C ) \\
+&\quad = (\sum_{i=1}^{n - 1} peso\_arista_i) + (\sum_{i=1}^{n - 1} C) \\  
+&\quad = (\sum_{i=1}^{n - 1} peso\_arista_i) + [(\sum_{i=1}^{n - 1}1) \cdot C] \\  
+&\quad = (\sum_{i=1}^{n - 1} peso\_arista_i) + [(n-1) \cdot C] \\  
+&\quad = peso\_original(MST_x)+ [(n-1) \cdot C] \\  
+\end{split}
+\end{equation}
+En la ecuación 2 podemos ver que al agregar una constante a todos los pesos,  al valor $peso\_original(MST_x)$ solo se le agrega $[(n-1) \cdot C]$. Esto no afecta ninguna relación de orden entre este $MST_x$ y cualquier otro $MST_y$ pues como se agregó la constante a todos los pesos, cualquier otro $MST_y$ habrá aumentado su peso con la misma constante $[(n-1) \cdot C]$, manteniendo su orden relativo.\\
+Ahora tomemos la segunda transformación que es multiplicar por una constante positiva a todos los pesos. La ecuación 1 queda:
+\begin{equation}
+\begin{split}
+peso\_multiplica\_constante(MST_x) & = \sum_{i=1}^{n - 1} (peso\_arista_i \cdot C ) \\
+&\quad = (\sum_{i=1}^{n - 1} peso\_arista_i) \cdot (C) \\  
+&\quad = peso\_original(MST_x) \cdot C\\  
+\end{split}
+\end{equation}
+En la ecuación 3 podemos ver que al multiplicar por una constante positiva a todos los pesos, el valor $peso\_original(MST_x)$ solo se incrementa en un factor de $C$. Esto no afecta ninguna relación de orden entre este $MST_x$ y cualquier otro $MST_y$ pues como se multiplicó por una constante positiva a todos los pesos, cualquier otro $MST_y$ habrá aumentado su peso en un factor de la misma constante $C$, manteniendo su orden relativo.\\
+Finalmente como ninguna de las transformaciones modifica el orden que existe entre los árboles generadores, entonces no afecta el conjunto de los árboles generadores mínimos, ya que se mantienen siendo mínimos en comparación a los demás árboles generadores y por las demostraciones anteriores ese orden no se altera.\\
+\section{Ejercicio 11.}
+\subsection{Demuestra que si todas las aristas de una gráfica conexa $G$ tienen pesos diferentes dos a dos, entonces $G$ tiene un sólo árbol generador mínimo.}
+\paragraph{Demostración} Por contradicción\\
+Supongamos que hay mas de un árbol generador mínimo, es decir tenemos al menos 2 árboles distintos. Supongamos que dichos árboles son $MST_1$ y $MST_2$. Esos dos árboles son distintos y por lo tanto hay al menos una arista $e \in MST_1$ tal que $e\notin MST_2$ y de igual forma hay al menos una arista $e' \notin MST_1$ tal que $e'\in MST_2$.\\
+Tomemos el caso de la  arista $e \in MST_1$ tal que $e\notin MST_2$, tomemos el cutset $C_1$ que corresponde al cutset donde la única arista que lo atraviesa es $e$, es decir que $e$ es la única arista que une un nodo $u\in S_a$ con un nodo $v\in S_b$ siendo $S_a$ y $S_b$ los dos conjuntos de nodos del cutset $C_1$.\\
+Ahora tomemos ese cutset pero desde $MST_2$ en este caso debe haber al menos una arista que lo atraviese, aunque también puede haber mas de una. Le sigue que la arista $e$ del $MST_1$ es distinta a cualquiera de estas aristas en el $MST_2$. Por lo tanto tienen peso mayor al peso de la arista $e$, o un peso menor.\\ Tomemos el caso que alguna de esas aristas $e'$ tiene peso menor que $e$, eso significa que en el $MST_1$ podemos reemplazar a $e$ con $e'$ pues $e'$ conecta el mismo cutset. Sin embargo como $e'$ tiene peso menor significa que el peso total del $MST_1$ disminuiría, pero esto es una contradicción pues $MST_1$ ya tenía peso mínimo. Por lo tanto no existe dicha arista $e'$ que es menor a $e$ para ese cutset. Tomemos entonces el caso que esas aristas en $MST_2$ para el cutset $C_1$ son mayores. Eso significa que pasa lo inverso, que $MST_2$ puede reemplazar cualquiera de esas aristas por $e$ y así disminuir el peso total de $MST_2$, sin embargo eso también es una contradicción pues $MST_2$ ya era de peso mínimo. Por lo tanto no pueden existir aristas distintas a $e$ en $MST_2$  para el cutset $C_1$. Como no pueden existir esas aristas entonces no puede haber ni una sola arista $e\in MST_1$ tal que $e\notin MST_2$. Finalmente significa que no puede existir mas de un único árbol generador mínimo para una gráfica $G$ donde todas las aristas tienen pesos diferentes dos a dos.
+\section{Ejercicio 12.}
+\subsection{Dado un árbol generador mínimo de una gráfica con pesos $G=(V,E)$ supongamos que una arista de $G$ es eliminada sin desconectar la gráfica. Describe cómo encontrar un nuevo árbol recubridor mínimo en tiempo proporcional a $|E|$.}
 \end{document}

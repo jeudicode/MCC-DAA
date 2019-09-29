@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.17)  27 SEP 2019 20:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.17)  28 SEP 2019 20:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -843,26 +843,39 @@ File: tikzlibraryfit.code.tex 2013/07/12 v3.0.1a (rcs-revision 1.5)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarybabel.code.tex
 File: tikzlibrarybabel.code.tex 2013/06/24 v3.0.1a (rcs-revision 1.1)
-) (./Tarea4_Rivas_Vega_Saul_Ivan.aux
+)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
+\ttl@box=\box47
+\beforetitleunit=\skip67
+\aftertitleunit=\skip68
+\ttl@plus=\dimen176
+\ttl@minus=\dimen177
+\ttl@toksa=\toks37
+\titlewidth=\dimen178
+\titlewidthlast=\dimen179
+\titlewidthfirst=\dimen180
+)
+(./Tarea4_Rivas_Vega_Saul_Ivan.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
 \openout1 = `Tarea4_Rivas_Vega_Saul_Ivan.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Info: Redefining \. on input line 34.
-LaTeX Info: Redefining \% on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Info: Redefining \. on input line 41.
+LaTeX Info: Redefining \% on input line 41.
 
 babelbib extension \btxifchangecaseoff added to \extrasspanish
 babelbib: Set bibliography fall-back language to spanish
@@ -871,16 +884,16 @@ babelbib: Set language for keywords in the bibliography fixed to spanish
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count130
-\scratchdimen=\dimen176
-\scratchbox=\box47
+\scratchdimen=\dimen181
+\scratchbox=\box48
 \nofMPsegments=\count131
 \nofMParguments=\count132
-\everyMPshowfont=\toks37
+\everyMPshowfont=\toks38
 \MPscratchCnt=\count133
-\MPscratchDim=\dimen177
+\MPscratchDim=\dimen182
 \MPnumerator=\count134
 \makeMPintoPDFobject=\count135
-\everyMPtoPDFconversion=\toks38
+\everyMPtoPDFconversion=\toks39
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -941,227 +954,227 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 35.
+LaTeX Font Info:    Try loading font information for U+msa on input line 42.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 35.
+LaTeX Font Info:    Try loading font information for U+msb on input line 42.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 47--48
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
 
  []
 
 [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
 
  []
 
 [4] [5] [6]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 193.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 200.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 193.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 200.
  [7]
 [8]
 <./images/hp001.png, id=46, 111.41624pt x 82.3075pt>
 File: ./images/hp001.png Graphic file (type png)
 <use ./images/hp001.png>
-Package pdftex.def Info: ./images/hp001.png  used on input line 274.
+Package pdftex.def Info: ./images/hp001.png  used on input line 281.
 (pdftex.def)             Requested size: 38.9994pt x 28.81056pt.
 <./images/hp002.png, id=47, 480.79625pt x 202.7575pt>
 File: ./images/hp002.png Graphic file (type png)
 <use ./images/hp002.png>
-Package pdftex.def Info: ./images/hp002.png  used on input line 280.
+Package pdftex.def Info: ./images/hp002.png  used on input line 287.
 (pdftex.def)             Requested size: 163.80095pt x 69.07585pt.
 
-Overfull \hbox (46.79976pt too wide) in paragraph at lines 280--281
+Overfull \hbox (46.79976pt too wide) in paragraph at lines 287--288
  [][] 
  []
 
 <./images/hp003.png, id=48, 747.79375pt x 197.73875pt>
 File: ./images/hp003.png Graphic file (type png)
 <use ./images/hp003.png>
-Package pdftex.def Info: ./images/hp003.png  used on input line 286.
+Package pdftex.def Info: ./images/hp003.png  used on input line 293.
 (pdftex.def)             Requested size: 210.6025pt x 55.68932pt.
 
-Overfull \hbox (93.6013pt too wide) in paragraph at lines 286--287
+Overfull \hbox (93.6013pt too wide) in paragraph at lines 293--294
  [][] 
  []
 
 <./images/hp004.png, id=49, 868.24374pt x 290.08376pt>
 File: ./images/hp004.png Graphic file (type png)
 <use ./images/hp004.png>
-Package pdftex.def Info: ./images/hp004.png  used on input line 292.
+Package pdftex.def Info: ./images/hp004.png  used on input line 299.
 (pdftex.def)             Requested size: 243.3609pt x 81.30699pt.
 
-Overfull \hbox (9.35852pt too wide) in paragraph at lines 292--293
+Overfull \hbox (9.35852pt too wide) in paragraph at lines 299--300
  [][] 
  []
 
 <./images/hp005.png, id=50, 869.2475pt x 304.13625pt>
 File: ./images/hp005.png Graphic file (type png)
 <use ./images/hp005.png>
-Package pdftex.def Info: ./images/hp005.png  used on input line 298.
+Package pdftex.def Info: ./images/hp005.png  used on input line 305.
 (pdftex.def)             Requested size: 243.3609pt x 85.14828pt.
 
-Overfull \hbox (9.35852pt too wide) in paragraph at lines 298--299
+Overfull \hbox (9.35852pt too wide) in paragraph at lines 305--306
  [][] 
  []
 
 <./images/hp006.png, id=51, 891.33pt x 289.08pt>
 File: ./images/hp006.png Graphic file (type png)
 <use ./images/hp006.png>
-Package pdftex.def Info: ./images/hp006.png  used on input line 304.
+Package pdftex.def Info: ./images/hp006.png  used on input line 311.
 (pdftex.def)             Requested size: 243.3609pt x 78.92601pt.
 
-Overfull \hbox (9.35852pt too wide) in paragraph at lines 304--305
+Overfull \hbox (9.35852pt too wide) in paragraph at lines 311--312
  [][] 
  []
 
 <./images/hp007.png, id=52, 1005.7575pt x 290.08376pt>
 File: ./images/hp007.png Graphic file (type png)
 <use ./images/hp007.png>
-Package pdftex.def Info: ./images/hp007.png  used on input line 310.
+Package pdftex.def Info: ./images/hp007.png  used on input line 317.
 (pdftex.def)             Requested size: 243.3609pt x 70.18808pt.
 
-Overfull \hbox (9.35852pt too wide) in paragraph at lines 310--311
+Overfull \hbox (9.35852pt too wide) in paragraph at lines 317--318
  [][] 
  []
 
 <./images/hp008.png, id=53, 1105.12875pt x 395.4775pt>
 File: ./images/hp008.png Graphic file (type png)
 <use ./images/hp008.png>
-Package pdftex.def Info: ./images/hp008.png  used on input line 316.
+Package pdftex.def Info: ./images/hp008.png  used on input line 323.
 (pdftex.def)             Requested size: 222.30154pt x 79.54668pt.
 <./images/hp009.png, id=54, 1078.0275pt x 387.4475pt>
 File: ./images/hp009.png Graphic file (type png)
 <use ./images/hp009.png>
-Package pdftex.def Info: ./images/hp009.png  used on input line 322.
+Package pdftex.def Info: ./images/hp009.png  used on input line 329.
 (pdftex.def)             Requested size: 243.3609pt x 87.46161pt.
 
-Overfull \hbox (9.35852pt too wide) in paragraph at lines 322--323
+Overfull \hbox (9.35852pt too wide) in paragraph at lines 329--330
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--326
+Underfull \hbox (badness 10000) in paragraph at lines 279--333
 []$[]$ $[]$ $[]$
  []
 
 
-Overfull \hbox (80.61584pt too wide) in paragraph at lines 272--326
+Overfull \hbox (80.61584pt too wide) in paragraph at lines 279--333
 []$ $[]$
  []
 
 
-Overfull \hbox (80.61584pt too wide) in paragraph at lines 272--326
+Overfull \hbox (80.61584pt too wide) in paragraph at lines 279--333
 []$ $[]$
  []
 
 
-Overfull \hbox (80.61584pt too wide) in paragraph at lines 272--326
+Overfull \hbox (80.61584pt too wide) in paragraph at lines 279--333
 []$ $[]$ 
  []
 
 <./images/hp010.png, id=55, 1075.01625pt x 398.48875pt>
 File: ./images/hp010.png Graphic file (type png)
 <use ./images/hp010.png>
-Package pdftex.def Info: ./images/hp010.png  used on input line 332.
+Package pdftex.def Info: ./images/hp010.png  used on input line 339.
 (pdftex.def)             Requested size: 300.30035pt x 111.31462pt.
 
-Overfull \hbox (27.30154pt too wide) in paragraph at lines 332--333
+Overfull \hbox (27.30154pt too wide) in paragraph at lines 339--340
  [][] 
  []
 
 <./images/hp011.png, id=56, 1077.02374pt x 391.4625pt>
 File: ./images/hp011.png Graphic file (type png)
 <use ./images/hp011.png>
-Package pdftex.def Info: ./images/hp011.png  used on input line 338.
+Package pdftex.def Info: ./images/hp011.png  used on input line 345.
 (pdftex.def)             Requested size: 300.30035pt x 109.1488pt.
 
-Overfull \hbox (27.30154pt too wide) in paragraph at lines 338--339
+Overfull \hbox (27.30154pt too wide) in paragraph at lines 345--346
  [][] 
  []
 
 <./images/hp012.png, id=57, 1073.00874pt x 384.43625pt>
 File: ./images/hp012.png Graphic file (type png)
 <use ./images/hp012.png>
-Package pdftex.def Info: ./images/hp012.png  used on input line 344.
+Package pdftex.def Info: ./images/hp012.png  used on input line 351.
 (pdftex.def)             Requested size: 300.30035pt x 107.58861pt.
 
-Overfull \hbox (27.30154pt too wide) in paragraph at lines 344--345
+Overfull \hbox (27.30154pt too wide) in paragraph at lines 351--352
  [][] 
  []
 
 <./images/hp013.png, id=58, 1068.99374pt x 383.4325pt>
 File: ./images/hp013.png Graphic file (type png)
 <use ./images/hp013.png>
-Package pdftex.def Info: ./images/hp013.png  used on input line 350.
+Package pdftex.def Info: ./images/hp013.png  used on input line 357.
 (pdftex.def)             Requested size: 300.30035pt x 107.71141pt.
 
-Overfull \hbox (27.30154pt too wide) in paragraph at lines 350--351
+Overfull \hbox (27.30154pt too wide) in paragraph at lines 357--358
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 330--354
+Underfull \hbox (badness 10000) in paragraph at lines 337--361
 []$[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 330--354
+Underfull \hbox (badness 10000) in paragraph at lines 337--361
 []$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 330--354
+Underfull \hbox (badness 10000) in paragraph at lines 337--361
 []$
  []
 
 
-LaTeX Warning: Float too large for page by 21.5801pt on input line 356.
+LaTeX Warning: Float too large for page by 21.5801pt on input line 363.
 
 <./images/hp014.png, id=59, 1052.93375pt x 391.4625pt>
 File: ./images/hp014.png Graphic file (type png)
 <use ./images/hp014.png>
-Package pdftex.def Info: ./images/hp014.png  used on input line 360.
+Package pdftex.def Info: ./images/hp014.png  used on input line 367.
 (pdftex.def)             Requested size: 421.19606pt x 156.59416pt.
 
-Overfull \hbox (70.19844pt too wide) in paragraph at lines 360--361
+Overfull \hbox (70.19844pt too wide) in paragraph at lines 367--368
  [][] 
  []
 
 <./images/hp015.png, id=60, 1139.25626pt x 392.46625pt>
 File: ./images/hp015.png Graphic file (type png)
 <use ./images/hp015.png>
-Package pdftex.def Info: ./images/hp015.png  used on input line 366.
+Package pdftex.def Info: ./images/hp015.png  used on input line 373.
 (pdftex.def)             Requested size: 421.19606pt x 145.09645pt.
 
-Overfull \hbox (70.19844pt too wide) in paragraph at lines 366--367
+Overfull \hbox (70.19844pt too wide) in paragraph at lines 373--374
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--370
+Underfull \hbox (badness 10000) in paragraph at lines 365--377
 []$[]$
  []
 
@@ -1169,36 +1182,61 @@ Underfull \hbox (badness 10000) in paragraph at lines 358--370
 images/hp004.png> <./images/hp005.png> <./images/hp006.png> <./images/hp007.png
 > <./images/hp008.png> <./images/hp009.png>] [12 <./images/hp010.png> <./images
 /hp011.png> <./images/hp012.png> <./images/hp013.png>] [13 <./images/hp014.png>
- <./images/hp015.png>] (./Tarea4_Rivas_Vega_Saul_Ivan.aux
+ <./images/hp015.png>] [14] [15] [16] [17] [18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 486--487
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 492--493
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 498--499
+
+ []
+
+[20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 530--533
+
+ []
+
+[22] [23] [24] (./Tarea4_Rivas_Vega_Saul_Ivan.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 ) ) 
 Here is how much of TeX's memory you used:
- 16218 strings out of 494747
- 304146 string characters out of 6176207
- 366811 words of memory out of 5000000
- 19217 multiletter control sequences out of 15000+600000
- 14661 words of font info for 56 fonts, out of 8000000 for 9000
+ 16518 strings out of 494747
+ 308048 string characters out of 6176207
+ 371860 words of memory out of 5000000
+ 19511 multiletter control sequences out of 15000+600000
+ 15138 words of font info for 58 fonts, out of 8000000 for 9000
  107 hyphenation exceptions out of 8191
- 55i,18n,60p,856b,808s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,18n,60p,1459b,921s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Tarea4_Rivas_Vega_Saul_Ivan.pdf (13 pages, 547619 bytes).
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/symbols/msbm10.pfb>
+Output written on Tarea4_Rivas_Vega_Saul_Ivan.pdf (24 pages, 632102 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
- 79 compressed objects within 1 object stream
+ 180 PDF objects out of 1000 (max. 8388607)
+ 117 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  88 words of extra memory for PDF output out of 10000 (max. 10000000)
 
