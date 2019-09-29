@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.17)  28 SEP 2019 20:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.17)  28 SEP 2019 21:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1202,7 +1202,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 530--533
 
  []
 
-[22] [23] [24] (./Tarea4_Rivas_Vega_Saul_Ivan.aux
+[22] [23] [24] [25] [26] (./Tarea4_Rivas_Vega_Saul_Ivan.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 ) ) 
@@ -1233,10 +1233,10 @@ dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/symbols/msbm10.pfb>
-Output written on Tarea4_Rivas_Vega_Saul_Ivan.pdf (24 pages, 632102 bytes).
+Output written on Tarea4_Rivas_Vega_Saul_Ivan.pdf (26 pages, 634615 bytes).
 PDF statistics:
- 180 PDF objects out of 1000 (max. 8388607)
- 117 compressed objects within 2 object streams
+ 187 PDF objects out of 1000 (max. 8388607)
+ 122 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  88 words of extra memory for PDF output out of 10000 (max. 10000000)
 
