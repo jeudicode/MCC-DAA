@@ -436,7 +436,7 @@ El algoritmo ejecuta cada iteración si existe algún nodo $v$ sin explorar y qu
  \begin{algorithm}[H]
  	\SetAlgoLined
  	\KwData{Índice $i$ del elemento a eliminar}
-		Asignamos el nuevo valor en $i$ como el menor valor entre el del hijo izquierdo y el hijo derecho, o VACÍO$\backslash$NULL en caso de que no tenga ningún hijo.\;
+		Asignamos el nuevo valor en $i$ como el menor valor entre el del hijo izquierdo y el hijo derecho, o VACÍO$\backslash$NULL (Lo eliminamos) en caso de que no tenga ningún hijo.\;
  		\eIf{tiene hijo izquierdo y el valor del hijo izquierdo fue el menor}{
  				llamar REMOVER($indice\_hijo\_izquierdo$)\;
  		}{
@@ -548,6 +548,74 @@ Para el segundo caso, al perder una arista del árbol generador mínimo terminam
 Ya con los nodos 'etiquetados', podemos recorrer el conjunto de aristas $E$, y si esa arista no es parte del árbol recubridor y ademas conecta un nodo en $S_a$ y a un nodo en $S_b$ lo guardamos como posible respuesta. Al considerar nuevas posibles respuestas nos vamos quedando con la menor. Con esa arista y las otras aristas que no fueron eliminadas del árbol recubridor mínimo original podemos formar nuestro nuevo árbol recubridor mínimo. Este proceso fue de tiempo $|E|$ pues recorrimos todas las aristas, sin importar el orden, solo que mantenemos a la menor que encontremos.
 \section{Ejercicio 13.}
 \subsection{Diseña un algoritmo que resuelva el siguiente problema y demuestra que tiene la complejidad que se solicita: dada una gráfica conexa $G$ con pesos positivos, encontrar en a lo más tiempo $O(mlog(m))$, un árbol recubridor mínimo que minimice la arista más costosa.}
-\paragraph{}
+\paragraph{Observación.} Se utilizará el algoritmo de Kruskal para obtener un árbol generador de peso mínimo. Posterior a demostrar la correctitud y complejidad para esta tarea, se demostrará que el árbol generador de peso mínimo resultante, sea $MST$, es también un árbol generador tal que no existe otro árbol generador (no necesariamente mínimo) que tenga una arista máxima menor a la arista máxima de $MST$.\\
+\begin{algorithm}[H]\footnotesize
+	\KwResult{Un árbol generador mínimo.}
+	\KwIn{Una Gráfica $G=(V,E)$}
+	\SetAlgoLined
+	Ordenar todas las aristas $e \in E$ de menor a mayor peso\;
+	\tcp{Inicializar el valor de padre a cada nodo}
+	$padre[u]=u$ para todo $u\in V$\;
+	\tcp{Inicializar el tamaño del conjunto de cada nodo}
+	$tamano[u]=1$ para todo $u\in V$\;
+	\tcp{Inicializar el conjunto de aristas del árbol generador resultante.}
+	$MST = \{\}$\;
+	\ForEach{arista $(u,v, peso)\in E$}{
+		\If{FIND($u$) != FIND($v$)}{ 
+			UNION($u$, $v$)\;
+			agregar arista $(u,v, peso)$ a $MST$\;
+		}
+	}
+	\caption{Kruskal.}
+\end{algorithm}
+\begin{algorithm}[H]\footnotesize
+	\KwResult{El padre de un conjunto.}
+	\KwIn{Un nodo $u$}
+	\SetAlgoLined
+	\If{padre[$u$] != $u$}{ 
+		return FIND(padre[u])\;
+	}
+	return $u$\;
+	\caption{FIND.}
+\end{algorithm}
+\begin{algorithm}[H]\footnotesize
+	\KwResult{Unir el conjunto que pertenece el nodo $u$ con el conjunto al que pertenece el nodo $v$.}
+	\KwIn{Un nodo $u$ y un nodo $v$}
+	\SetAlgoLined
+	\eIf{tamano[FIND($u$)] $<$ tamano[FIND($v$)]}{ 
+		padre[FIND($u$)] := FIND($v$)\;
+		tamano[FIND($v$)] := tamano[FIND($v$)] + tamano[FIND($u$)];
+	} {
+	padre[FIND($v$)] := FIND($u$)\;
+	tamano[FIND($u$)] := tamano[FIND($u$)] + tamano[FIND($v$)];
+	}
+	\caption{UNION.}
+\end{algorithm}
+\subsection{Demostraremos el algoritmo 6 para la operación UNION.}
+\paragraph{El algoritmo termina y es de complejidad $O(1)$} El algoritmo solo realiza dos asignaciones, si el menor en tamaño es el conjunto al que pertenece $u$, se marca como nuevo padre del conjunto al padre del conjunto al que pertenece $v$, y sumando sus tamaños. En caso de que $v$ sea menor o igual se hacen las asignación pero intercambiando $u$ por $v$. Podemos considerar las asignaciones como operaciones constantes así la complejidad de una llamada de UNION será de orden $O(1)$.
+\paragraph{El algoritmo asigna como padre del conjunto menor al padre del conjunto mayor.}
+El algoritmo realiza dichas operaciones correspondientes posteriormente de hacer la comparación de tamaños en la linea 1.
+\subsection{Demostremos el algoritmo 5 para la operación FIND.}
+\paragraph{El algoritmo termina y tiene complejidad $O(log(n))$} El algoritmo seguirá llamando a FIND hasta que un nodo sea el mismo que el padre del conjunto al que pertenece. Inicialmente todos son el padre del conjunto al que pertenecen por la linea 2 en el algoritmo 4. El valor de padre[$u$] solo es modificado en la operación UNION, sin embargo solo cambia para uno de los dos nodos que recibe UNION. Por lo tanto uno de los dos se mantendrá. Le sigue que el padre de un conjunto $p$ siempre cumplirá que $padre[p] = p$. La cantidad de llamadas que realiza FIND corresponde a la cantidad de operaciones UNION hubo para formar al conjunto del que estamos buscando su padre. Esta cantidad no puede ser mayor a $log(n)$, esto pues para cada operación UNION se cambió el padre del conjunto más pequeño de $x$ elementos, esto es que el conjunto mayor tuvo al menos $x$ elementos, dejando un conjunto resultante de al menos $2x$ elementos. Ahora si este mismo conjunto cambió su padre significa que hubo otro conjunto de al menos $2x$ elementos y dejando un conjunto resultante de al menos $4x$ elementos. Así pues llegamos a que si la suma total de elementos es $n$, y cada cambió de padre multiplica en al menos 2 el número de elementos, no pudo haber más de $log(n)$ cambios de padre en un conjunto dado. Posteriormente tenemos que se hacen a lo más $log(n)$ llamadas a FIND. Finalmente como en cada llamada solo se realiza una comparación que consideramos constante $O(1)$, FIND tiene como complejidad $O(log(n))$.
+\paragraph{El algoritmo regresa al padre del conjunto al que pertenece el nodo $u$}
+El algoritmo no para hasta encontrarlo y solo revisa que en efecto el padre del conjunto es el mismo nodo $u$ y lo regresamos en la linea 4. Seguimos buscando en caso contrario y en la demostración anterior determinamos que llegará eventualmente al elemento padre del conjunto.
+\subsection{Demostremos el algoritmo 4 para encontrar un árbol generador mínimo.}
+\paragraph{El algoritmo termina}
+Por la invariante de recorremos una sola vez cada arista en $E$ en el ciclo de la línea 5, a lo mas tendremos $|E|$ iteraciones.
+\paragraph{El algoritmo es de complejidad $O(mlog(m))$}
+El ordenar las aristas en la línea 1 ya es de $O(mlog(m))$. Ahora, el ciclo en la línea 5 también es $O(mlog(m))$, esto es porque se el ciclo tiene $m$ iteraciones y se realizan 2 operaciones FIND y una operación UNION, vimos en las demostraciones anteriores que FIND tiene una complejidad de $O(log(n))$ y UNION una complejidad de $O(1)$. Finalmente tenemos $O(mlog(m) + mlog(n))$, sin embargo como $m>=n-1$ el factor dominante es $mlog(m)$. Finalmente es de orden $O(mlog(m))$ como se solicita en el ejercicio.
+\paragraph{Correctitud: El algoritmo regresa un árbol generador de peso mínimo.}
+Por inducción.\\
+\textbf{Invariante: } Si una arista esta en el conjunto resultante $MST$, dicha arista pertenece al árbol generador de peso mínimo.\\
+\textbf{Caso base:} El conjunto $MST$ tiene a la primer arista del conjunto ordenado $E$, eso es que es la mínima arista para los nodos $u$ y $v$ que conecta la arista. Ese es el árbol generador mínimo para 2 nodos siendo estos $u$ y $v$, ya que por estar ordenados cualquier otra arista que los una y no es la primera tendrá peso mayor o igual a la primera.\\
+\textbf{Hipótesis inductiva:} La siguiente arista que una dos conjuntos disjuntos será miembro del árbol generador mínimo.
+Suponer verdadero hasta la $i$-ésima arista en agregar a $MST$.\\
+Dicha arista $i$ une dos conjuntos disjuntos, pues esto se verifica antes de tomar la arista en la línea 6 del algoritmo 4. Sean $A$ y $B$ dichos conjuntos. Eso significa que podemos tomar el cutset $C_x$ que separa dos conjuntos de nodos, sean $S_a$ y $S_b$, tal que $A\subseteq S_a$ y $B\subseteq S_b$. Como el conjunto de aristas esta ordenada, la invariante es la arista $i$ es menor o igual a cualquier otra arista que este después de ella.\\
+Por lo tanto cualquier otra arista que una al cutset $C_x$ y se encuentre después de $i$ tendrá peso mayor o igual a la arista $i$. Posteriormente, como esto se repetirá para los siguientes conjuntos disjuntos que una alguna arista posterior a $i$, podemos decir que para todo cutset para el cuál haya una sola arista en $MST$ que lo atraviese (pues se unieron dos conjuntos disjuntos) será siempre de peso mínimo. Finalmente como habrá $n-1$ aristas en $MST$ tendremos $n-1$ cutsets para los que tendremos aristas de peso mínimo que unieron conjuntos disjuntos de nodos, es decir que tendremos $n-1$ aristas que terminan conectando $n$ nodos, siendo esta la definición de un árbol generador de peso mínimo. 
+\subsection{Demostración de que un árbol generador de peso mínimo es un árbol que minimiza un arista máxima.}
+Por contradicción.\\
+Supongamos que tenemos a nuestro árbol generador de peso mínimo $MST_1$ y que existe al menos un árbol generador $MST_2$ tal que su arista de mayor peso es menor a la arista de mayor peso en $MST_1$. Sea $e$ la arista de mayor peso en $MST_1$. Entonces la arista $e$ tiene peso estrictamente mayor al peso de toda arista que pertenece a $MST_2$.\\
+Tomemos el cutset $C_1$ que corresponde al cutset donde la única arista que lo atraviesa es $e$, es decir que $e$ es la única arista que es miembro de $MST_1$ y además une un nodo $u\in S_a$ con un nodo $v\in S_b$, siendo $S_a$ y $S_b$ los dos conjuntos de nodos del cutset $C_1$.\\
+Ahora tomemos ese cutset pero desde $MST_2$ en este caso debe haber al menos una arista que lo atraviese, aunque también puede haber mas de una. Le sigue que el peso de la arista $e$ del $MST_1$ es mayor al peso de cualquiera de estas aristas del $MST_2$. Sea $e'$ cualquiera de estas aristas del $MST_2$. Eso significa que en el $MST_1$ podemos reemplazar a $e$ con $e'$, pues $e'$ conecta el mismo cutset que conectaba $e$. Sin embargo como $e'$ tiene peso menor significa que el peso total del $MST_1$ disminuiría, pero esto es una contradicción pues $MST_1$ ya tenía peso mínimo. Por lo tanto no existe dicha arista $e'$ que es menor a $e$ para ese cutset. Como no pueden existir esas aristas entonces no puede haber ni una sola arista $e\in MST_1$ tal que sea de peso mayor a toda arista que pertenece a $MST_2$. Por lo tanto no puede existir ni un solo árbol generador tal que su arista de mayor peso es menor a la arista de mayor peso en $MST_1$. Finalmente un árbol generador de peso mínimo es también un árbol generador que minimiza su arista máxima.
 
 \end{document}
