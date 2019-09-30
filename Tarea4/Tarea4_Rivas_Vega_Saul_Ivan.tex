@@ -548,7 +548,7 @@ Para el segundo caso, al perder una arista del árbol generador mínimo terminam
 Ya con los nodos 'etiquetados', podemos recorrer el conjunto de aristas $E$, y si esa arista no es parte del árbol recubridor y ademas conecta un nodo en $S_a$ y a un nodo en $S_b$ lo guardamos como posible respuesta. Al considerar nuevas posibles respuestas nos vamos quedando con la menor. Con esa arista y las otras aristas que no fueron eliminadas del árbol recubridor mínimo original podemos formar nuestro nuevo árbol recubridor mínimo. Este proceso fue de tiempo $|E|$ pues recorrimos todas las aristas, sin importar el orden, solo que mantenemos a la menor que encontremos.
 \section{Ejercicio 13.}
 \subsection{Diseña un algoritmo que resuelva el siguiente problema y demuestra que tiene la complejidad que se solicita: dada una gráfica conexa $G$ con pesos positivos, encontrar en a lo más tiempo $O(mlog(m))$, un árbol recubridor mínimo que minimice la arista más costosa.}
-\paragraph{Observación.} Se utilizará el algoritmo de Kruskal para obtener un árbol generador de peso mínimo. Posterior a demostrar la correctitud y complejidad para esta tarea, se demostrará que el árbol generador de peso mínimo resultante, sea $MST$, es también un árbol generador tal que no existe otro árbol generador (no necesariamente mínimo) que tenga una arista máxima menor a la arista máxima de $MST$.\\
+\paragraph{Observación.} Se utilizará el algoritmo de Kruskal para obtener un árbol generador de peso mínimo. Posterior a demostrar la correctitud y complejidad para esta tarea, se demostrará que el árbol generador de peso mínimo resultante, sea $MST$, es también un árbol generador tal que no existe otro árbol generador (no necesariamente mínimo) que su arista de mayor peso sea menor a la arista de mayor peso de $MST$.\\
 \begin{algorithm}[H]\footnotesize
 	\KwResult{Un árbol generador mínimo.}
 	\KwIn{Una Gráfica $G=(V,E)$}
@@ -601,7 +601,7 @@ El algoritmo realiza dichas operaciones correspondientes posteriormente de hacer
 El algoritmo no para hasta encontrarlo y solo revisa que en efecto el padre del conjunto es el mismo nodo $u$ y lo regresamos en la linea 4. Seguimos buscando en caso contrario y en la demostración anterior determinamos que llegará eventualmente al elemento padre del conjunto.
 \subsection{Demostremos el algoritmo 4 para encontrar un árbol generador mínimo.}
 \paragraph{El algoritmo termina}
-Por la invariante de recorremos una sola vez cada arista en $E$ en el ciclo de la línea 5, a lo mas tendremos $|E|$ iteraciones.
+Por la invariante de que recorremos una sola vez cada arista en $E$ en el ciclo de la línea 5, a lo mas tendremos $|E|$ iteraciones.
 \paragraph{El algoritmo es de complejidad $O(mlog(m))$}
 El ordenar las aristas en la línea 1 ya es de $O(mlog(m))$. Ahora, el ciclo en la línea 5 también es $O(mlog(m))$, esto es porque se el ciclo tiene $m$ iteraciones y se realizan 2 operaciones FIND y una operación UNION, vimos en las demostraciones anteriores que FIND tiene una complejidad de $O(log(n))$ y UNION una complejidad de $O(1)$. Finalmente tenemos $O(mlog(m) + mlog(n))$, sin embargo como $m>=n-1$ el factor dominante es $mlog(m)$. Finalmente es de orden $O(mlog(m))$ como se solicita en el ejercicio.
 \paragraph{Correctitud: El algoritmo regresa un árbol generador de peso mínimo.}
