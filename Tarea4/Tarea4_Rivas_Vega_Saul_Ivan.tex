@@ -436,26 +436,46 @@ El algoritmo ejecuta cada iteración si existe algún nodo $v$ sin explorar y qu
  \begin{algorithm}[H]
  	\SetAlgoLined
  	\KwData{Índice $i$ del elemento a eliminar}
-		Asignamos el nuevo valor en $i$ como el menor valor entre el del hijo izquierdo y el hijo derecho, o VACÍO$\backslash$NULL (Lo eliminamos) en caso de que no tenga ningún hijo.\;
- 		\eIf{tiene hijo izquierdo y el valor del hijo izquierdo fue el menor}{
- 				llamar REMOVER($indice\_hijo\_izquierdo$)\;
+		Reemplazamos el valor en $i$ por el valor del último elemento, el elemento en $n-1$.\;
+		Eliminamos el elemento en $n-1$
+ 		\eIf{El elemento en $i$ ahora es menor a su padre.}{
+ 				SUBIR($i$)\;
  		}{
- 		\If{tiene hijo derecho y el valor del hijo derecho fue el menor}{
- 			llamar REMOVER($indice\_hijo\_derecho$)\;
+ 		\If{alguno de sus hijos es menor}{
+ 				BAJAR($i$)\;
  		}
  	}
  	\caption{Algoritmo REMOVER para eliminar el elemento $i$-ésimo de la cola de prioridad}
  \end{algorithm}
-\paragraph{Complejidad} El algoritmo en cada llamada solo realiza una comparación entre los valores entre los hijos en el heap binario del $i$-ésimo elemento, y selecciona el menor entre los dos, o el valor único si solo tiene un hijo, o VACÍO$\backslash$NULL si no tiene hijos, que es el caso que el elemento a eliminar es una hoja y no habrá quien lo reemplace. La comparación y revisiones para ver si tiene hijos dentro de una llamada podemos considerarlas como operaciones constantes, sin embargo se multiplicará por el número de llamadas. Cada llamada recursiva se realiza si el elemento en el índice $i$ a remover tiene al menos un hijo, y se realiza una llamada en el hijo izquierdo o derecho. Entonces el número de llamadas corresponde a la cantidad de niveles en el heap binario a partir del índice $i$. En el peor de los casos donde el elemento a remover es la raíz y se recorren todos los niveles del heap binario se habrían hecho $log_2(n)$ llamadas pues es la altura de un heap binario balanceado de $n$ elementos.\\ Finalmente se tendría que con $log_2(n)$ llamadas y con operaciones constantes se tendría una complejidad de orden $O(log_2(n))$.
+\begin{algorithm}[H]
+	\SetAlgoLined
+	\KwData{Índice $i$ del elemento a subir}
+	Reemplazamos el valor de $i$ con el de su padre.\;
+	\If{El elemento en la nueva posición sigue siendo menor a su nuevo padre.}{
+		SUBIR($i$)\;
+	}
+	\caption{Algoritmo SUBIR para colocar el elemento $i$-ésimo de la cola de prioridad en un nivel arriba}
+\end{algorithm}
+\begin{algorithm}[H]
+	\SetAlgoLined
+	\KwData{Índice $i$ del elemento a bajar}
+	Reemplazamos el valor de $i$ con el del menor de sus hijos.\;
+	\If{El elemento en la nueva posición sigue siendo mayor que alguno de sus nuevos hijos.}{
+		BAJAR($i$)\;
+	}
+	\caption{Algoritmo BAJAR para colocar el elemento $i$-ésimo de la cola de prioridad en una nivel abajo}
+\end{algorithm}
+\paragraph{Complejidad} El algoritmo en cada llamada solo realiza una comparación entre los valores entre los hijos en el heap binario del $i$-ésimo elemento o una comparación entre el $i$-ésimo elemento y su padre. Las comparaciones en BAJAR, SUBIR o REMOVER, podemos considerarlas como operaciones constantes, sin embargo se multiplicará por el número de llamadas ya sea a BAJAR o a SUBIR. Cada llamada recursiva se realiza si el elemento en el índice $i$ a remover tiene al menos un hijo y es mayor a alguno de ellos, o si menor a su padre. Entonces el número de llamadas corresponde a la cantidad de niveles en el heap binario a partir del índice $i$. En el peor de los casos donde el elemento a remover es la raíz y se recorren todos los niveles del heap binario se habrían hecho $log_2(n)$ llamadas pues es la altura de un heap binario balanceado de $n$ elementos.\\ Finalmente se tendría que con $log_2(n)$ llamadas y con operaciones constantes se tendría una complejidad de orden $O(log_2(n))$.
 \paragraph{Correctitud} El algoritmo termina pues en el análisis de complejidad se llega que a lo más se realizarían $log_2(n)$ llamadas y una serie de operaciones constantes en cada llamada.\\
-Ahora al terminar el algoritmo termina con un heap binario $A$ con los mismos elementos con excepción del elemento que se eliminó y estaba en la posición $i$. Lo que hace el algoritmo es reemplazar ese elemento con el menor de sus hijos si tiene alguno. La relación del padre de $i$ con $i$ es: \\
+Ahora al terminar el algoritmo termina con un heap binario $A$ con los mismos elementos con excepción del elemento que se eliminó y estaba en la posición $i$. Lo que hace el algoritmo es reemplazar ese elemento con el menor de sus hijos si tiene alguno. También si el elemento sube, este se detendrá hasta cumplir la condición de orden con su padre. La relación del padre de $i$ con $i$ es: \\
 $A[padre(i)] \leq A[i]$\\
 Y la relación de $i$ con sus hijos es:\\
 $A[i] \leq A[hijo\_izq(i)]$ y  $A[i] \leq A[hijo\_der(i)]$\\
 Entonces se cumple que:\\
 $A[padre(i)] \leq A[hijo\_der(i)]$ y $A[padre(i)] \leq A[hijo\_izq(i)]$\\
-Así que las invariantes de las  relaciones de orden se mantienen al reemplazar el valor en $i$ con alguno de sus hijos, y ahora al seleccionar al menor de ambos se cumplirá recursivamente a sus hijos.
-Por lo tanto el orden en el heap binario se mantiene hasta llegar a una hoja y no quede mas que colocar un valor NULL. Finalmente se o termina con un heap binario $A$ con los mismos elementos con excepción del elemento que se eliminó y estaba en la posición $i$.
+Así que las invariantes de las  relaciones de orden se mantienen al reemplazar el valor en $i$ con alguno de sus hijos, o intercambiando su lugar con su padre dependiendo de las comparaciones iniciales antes de llamar a SUBIR o BAJAR.
+Por lo tanto el orden en el heap binario se mantiene hasta llegar a una hoja o llegar a la raíz. Finalmente se o termina con un heap binario $A$ con los mismos elementos con excepción del valor del elemento que se eliminó.
+Otra observación es que al dejar libre la posición $n-1$, se mantienen las operaciones de inserción y la estructura de completa del árbol binario para futuras inserciones ya que se realizan en la última posición.
 \pagebreak
 \section{Ejercicio 7.}
 \subsection{Sea $G=(V,E)$ una gráfica. Demuestra que cualesquiera dos de las siguientes propiedades implican la tercera.}
@@ -467,7 +487,7 @@ Por lo tanto el orden en el heap binario se mantiene hasta llegar a una hoja y n
 \paragraph{Demostremos que $1$ y $3$ implican $2$.}
 Supongamos a $G$ una gráfica que cumple con $1$, y $3$. La gráfica $G$ tiene $n$ nodos, es decir $|V| = n$. En un ciclo de $z$ nodos se requieren $z$ aristas, pues para que el camino que comprende al ciclo se complete el último nodo debe tener una arista al primero, así los $z$ nodos tienen una arista. Pero solo tenemos $n - 1$ aristas por la propiedad $3$, la única forma de tener un ciclo es conectando una cantidad $x<n$ de nodos con $x$ aristas, pero dejarán sin arista a algún nodo, dejándolo  desconectado, pero eso no es posible por la propiedad $1$. Finalmente no es posible formar un ciclo en $G$ manteniendo $|V| - 1$ aristas y manteniendo a $G$ conexo.
 \paragraph{Demostremos que $2$ y $3$ implican $1$.}
-Supongamos a $G$ una gráfica que cumple con $1$, y $3$. Dejemos desconectado a por lo menos un nodo $u$ de $G$, eso nos dejaría con $n-1$ nodos conectados con $n-1$ aristas. Ahora en esos $n-1$ nodos para estar conectados, todos los nodos deben tener al menos una arista que lo conecte a otro de los $n-1$ nodos, como tienen $n-1$ aristas, es una arista para cada uno. Le sigue que como es conexo si exploramos desde uno de esos $n-1$ nodos llegaremos a todos los otros $n-1$ nodos, pues en nuestra suposición inicial $u$ es el único nodo desconectado. Pero al llegar al nodo $n-1$ en el camino, ese nodo también tiene una arista que nos llevará a otro de los $n-1$ nodos que ya exploramos, siendo entonces un ciclo. Por lo tanto si tenemos $n-1$ aristas y $n$ nodos, no podemos evitar tener un ciclo al dejar al menos un nodo desconectado. Finalmente si tenemos $n-1$ aristas y no tenemos ciclos entonces $G$ es conexa.
+Supongamos a $G$ una gráfica que cumple con $2$, y $3$. Dejemos desconectado a por lo menos un nodo $u$ de $G$, eso nos dejaría con $n-1$ nodos conectados con $n-1$ aristas. Ahora en esos $n-1$ nodos para estar conectados, todos los nodos deben tener al menos una arista que lo conecte a otro de los $n-1$ nodos, como tienen $n-1$ aristas, es una arista para cada uno. Le sigue que como es conexo si exploramos desde uno de esos $n-1$ nodos llegaremos a todos los otros $n-1$ nodos, pues en nuestra suposición inicial $u$ es el único nodo desconectado. Pero al llegar al nodo $n-1$ en el camino, ese nodo también tiene una arista que nos llevará a otro de los $n-1$ nodos que ya exploramos, siendo entonces un ciclo. Por lo tanto si tenemos $n-1$ aristas y $n$ nodos, no podemos evitar tener un ciclo al dejar al menos un nodo desconectado. Finalmente si tenemos $n-1$ aristas y no tenemos ciclos entonces $G$ es conexa.
 \pagebreak
 \paragraph{Demostremos que $1$ y $2$ implican $3$.}
 Supongamos a $G$ una gráfica que cumple con $1$, y $2$. Tomando en cuenta las observaciones de la demostración anterior, sabemos que si tenemos $n$ nodos conectados y $n$ aristas tendremos un ciclo. Así pues debemos tener menos que $n$ aristas para evitar formar un ciclo al ser conexa la gráfica. Probemos que podemos construir una gráfica conexa con $n$ nodos con $n-1$ aristas para cualquier $n>1$. Caso para $n=1$, con un solo nodo, es conexa con $0$ aristas. Ahora para  construir cualquier otra gráfica conexa podemos agregar un nuevo nodo con una nueva arista a ese nodo inicial o a cualquier otro nodo que pueda llegar al nodo inicial. Cualquier gráfica conexa que construyamos de esa forma  tendrá $n-1$ aristas, pues con cada nodo nuevo se agrega una arista, con excepción del nodo inicial. Probemos que no podemos construir una gráfica conexa con menos de $n-1$ aristas, el valor mas grande que es menor a $n-1$ es $n-2$. Si tomamos el caso con $n=2$ tendremos 0 aristas, dejando 2 nodos desconectados, y agregando una arista nueva y un nodo nuevo para $n>2$ dejará al menos un nodo desconectado.\\
@@ -504,31 +524,31 @@ Revisemos el caso cuando $|E| = |V|$, entonces las complejidades para cada algor
 El algoritmo que mas conviene en función de $|E|$ es el algoritmo de Johnson pues no importa que tan grande pueda ser $|E|$, el algoritmo tendrá como complejidad aproximada $O(|V|^{3})$ que es igual a Floyd y menor a Ford. Además de que si ahora consideramos menores valores de $|E|$ el algoritmo de Johnson tiene la mejor función de complejidad entre los 3, es decir para todos los valores de $|E|$ que cumplan $|V|^{2} > |E| \geq |V|$. En los únicos valores donde conviene usar a Ford en vez de Johnson es para valores de $|E|$ que cumplan $log(|V|) > |E| \geq 0$, pues Johnson no baja de $O(|V|^{2}log(|V|))$ aún con $|E| = 0$.
 \section{Ejercicio 10.}
 \subsection{Prueba que agregar una constante a todos los pesos y que multiplicar por una constante positiva no altera el conjunto de árboles generadores mínimos de una gráfica conexa con pesos dada.}
-\paragraph{Demostración} Tomemos a cualquier árbol generador $MST_x$ de una gráfica $G$ con $n$ nodos, no necesariamente mínimo, y revisemos el cálculo de su peso total:
+\paragraph{Demostración} Tomemos a cualquier árbol generador $ST_x$ de una gráfica $G$ con $n$ nodos, no necesariamente mínimo, y revisemos el cálculo de su peso total:
 \begin{equation}
-peso\_original(MST_x) = \sum_{i=1}^{n - 1} peso\_arista_i 
+peso\_original(ST_x) = \sum_{i=1}^{n - 1} peso\_arista_i 
 \end{equation}
-La ecuación se refiere a que el peso total de cualquier árbol generador $MST_x$  es la suma de los pesos de las aristas que lo componen.\\
-Ahora tomemos la primera transformación que es agregar una constante a todos los pesos. La ecuación 1 queda:
+La ecuación se refiere a que el peso total de cualquier árbol generador $ST_x$  es la suma de los pesos de las aristas que lo componen.\\
+Ahora tomemos la primera transformación que es agregar una constante a todos los pesos de las aristas en el grafo. La ecuación 1 queda:
 \begin{equation}
 \begin{split}
-peso\_suma\_constante(MST_x) & = \sum_{i=1}^{n - 1} (peso\_arista_i + C ) \\
+peso\_suma\_constante(ST_x) & = \sum_{i=1}^{n - 1} (peso\_arista_i + C ) \\
 &\quad = (\sum_{i=1}^{n - 1} peso\_arista_i) + (\sum_{i=1}^{n - 1} C) \\  
 &\quad = (\sum_{i=1}^{n - 1} peso\_arista_i) + [(\sum_{i=1}^{n - 1}1) \cdot C] \\  
 &\quad = (\sum_{i=1}^{n - 1} peso\_arista_i) + [(n-1) \cdot C] \\  
-&\quad = peso\_original(MST_x)+ [(n-1) \cdot C] \\  
+&\quad = peso\_original(ST_x)+ [(n-1) \cdot C] \\  
 \end{split}
 \end{equation}
-En la ecuación 2 podemos ver que al agregar una constante a todos los pesos,  al valor $peso\_original(MST_x)$ solo se le agrega $[(n-1) \cdot C]$. Esto no afecta ninguna relación de orden entre este $MST_x$ y cualquier otro $MST_y$ pues como se agregó la constante a todos los pesos, cualquier otro $MST_y$ habrá aumentado su peso con la misma constante $[(n-1) \cdot C]$, manteniendo su orden relativo.\\
+En la ecuación 2 podemos ver que al agregar una constante a todos los pesos,  al valor $peso\_original(ST_x)$ solo se le agrega $[(n-1) \cdot C]$. Esto no afecta ninguna relación de orden entre este $ST_x$ y cualquier otro $ST_y$ pues como se agregó la constante a todos los pesos, cualquier otro $ST_y$ habrá aumentado su peso con la misma constante $[(n-1) \cdot C]$, manteniendo su orden.\\
 Ahora tomemos la segunda transformación que es multiplicar por una constante positiva a todos los pesos. La ecuación 1 queda:
 \begin{equation}
 \begin{split}
-peso\_multiplica\_constante(MST_x) & = \sum_{i=1}^{n - 1} (peso\_arista_i \cdot C ) \\
+peso\_multiplica\_constante(ST_x) & = \sum_{i=1}^{n - 1} (peso\_arista_i \cdot C ) \\
 &\quad = (\sum_{i=1}^{n - 1} peso\_arista_i) \cdot (C) \\  
-&\quad = peso\_original(MST_x) \cdot C\\  
+&\quad = peso\_original(ST_x) \cdot C\\  
 \end{split}
 \end{equation}
-En la ecuación 3 podemos ver que al multiplicar por una constante positiva a todos los pesos, el valor $peso\_original(MST_x)$ solo se incrementa en un factor de $C$. Esto no afecta ninguna relación de orden entre este $MST_x$ y cualquier otro $MST_y$ pues como se multiplicó por una constante positiva a todos los pesos, cualquier otro $MST_y$ habrá aumentado su peso en un factor de la misma constante $C$, manteniendo su orden relativo.\\
+En la ecuación 3 podemos ver que al multiplicar por una constante positiva a todos los pesos, el valor $peso\_original(ST_x)$ solo se incrementa en un factor de $C$. Esto no afecta ninguna relación de orden entre este $ST_x$ y cualquier otro $ST_y$ pues como se multiplicó por una constante positiva a todos los pesos, cualquier otro $ST_y$ habrá aumentado su peso en un factor de la misma constante $C$, manteniendo su orden.\\
 Finalmente como ninguna de las transformaciones modifica el orden que existe entre los árboles generadores, entonces no afecta el conjunto de los árboles generadores mínimos, ya que se mantienen siendo mínimos en comparación a los demás árboles generadores y por las demostraciones anteriores ese orden no se altera.\\
 \section{Ejercicio 11.}
 \subsection{Demuestra que si todas las aristas de una gráfica conexa $G$ tienen pesos diferentes dos a dos, entonces $G$ tiene un sólo árbol generador mínimo.}
@@ -591,15 +611,15 @@ Ya con los nodos 'etiquetados', podemos recorrer el conjunto de aristas $E$, y s
 	}
 	\caption{UNION.}
 \end{algorithm}
-\subsection{Demostraremos el algoritmo 6 para la operación UNION.}
+\subsection{Demostraremos el algoritmo 8 para la operación UNION.}
 \paragraph{El algoritmo termina y es de complejidad $O(1)$} El algoritmo solo realiza dos asignaciones, si el menor en tamaño es el conjunto al que pertenece $u$, se marca como nuevo padre del conjunto al padre del conjunto al que pertenece $v$, y sumando sus tamaños. En caso de que $v$ sea menor o igual se hacen las asignación pero intercambiando $u$ por $v$. Podemos considerar las asignaciones como operaciones constantes así la complejidad de una llamada de UNION será de orden $O(1)$.
 \paragraph{El algoritmo asigna como padre del conjunto menor al padre del conjunto mayor.}
 El algoritmo realiza dichas operaciones correspondientes posteriormente de hacer la comparación de tamaños en la linea 1.
-\subsection{Demostremos el algoritmo 5 para la operación FIND.}
+\subsection{Demostremos el algoritmo 7 para la operación FIND.}
 \paragraph{El algoritmo termina y tiene complejidad $O(log(n))$} El algoritmo seguirá llamando a FIND hasta que un nodo sea el mismo que el padre del conjunto al que pertenece. Inicialmente todos son el padre del conjunto al que pertenecen por la linea 2 en el algoritmo 4. El valor de padre[$u$] solo es modificado en la operación UNION, sin embargo solo cambia para uno de los dos nodos que recibe UNION. Por lo tanto uno de los dos se mantendrá. Le sigue que el padre de un conjunto $p$ siempre cumplirá que $padre[p] = p$. La cantidad de llamadas que realiza FIND corresponde a la cantidad de operaciones UNION hubo para formar al conjunto del que estamos buscando su padre. Esta cantidad no puede ser mayor a $log(n)$, esto pues para cada operación UNION se cambió el padre del conjunto más pequeño de $x$ elementos, esto es que el conjunto mayor tuvo al menos $x$ elementos, dejando un conjunto resultante de al menos $2x$ elementos. Ahora si este mismo conjunto cambió su padre significa que hubo otro conjunto de al menos $2x$ elementos y dejando un conjunto resultante de al menos $4x$ elementos. Así pues llegamos a que si la suma total de elementos es $n$, y cada cambió de padre multiplica en al menos 2 el número de elementos, no pudo haber más de $log(n)$ cambios de padre en un conjunto dado. Posteriormente tenemos que se hacen a lo más $log(n)$ llamadas a FIND. Finalmente como en cada llamada solo se realiza una comparación que consideramos constante $O(1)$, FIND tiene como complejidad $O(log(n))$.
 \paragraph{El algoritmo regresa al padre del conjunto al que pertenece el nodo $u$}
 El algoritmo no para hasta encontrarlo y solo revisa que en efecto el padre del conjunto es el mismo nodo $u$ y lo regresamos en la linea 4. Seguimos buscando en caso contrario y en la demostración anterior determinamos que llegará eventualmente al elemento padre del conjunto.
-\subsection{Demostremos el algoritmo 4 para encontrar un árbol generador mínimo.}
+\subsection{Demostremos el algoritmo 6 para encontrar un árbol generador mínimo.}
 \paragraph{El algoritmo termina}
 Por la invariante de que recorremos una sola vez cada arista en $E$ en el ciclo de la línea 5, a lo mas tendremos $|E|$ iteraciones.
 \paragraph{El algoritmo es de complejidad $O(mlog(m))$}
