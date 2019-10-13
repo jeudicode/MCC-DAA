@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.17)  12 OCT 2019 21:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.17)  13 OCT 2019 01:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Tarea4_Rivas_Vega_Saul_Ivan.tex
-(./Tarea4_Rivas_Vega_Saul_Ivan.tex
+**Tarea5_Rivas_Vega_Saul_Ivan.tex
+(./Tarea5_Rivas_Vega_Saul_Ivan.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 12 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -856,26 +856,26 @@ Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
 \titlewidthlast=\dimen179
 \titlewidthfirst=\dimen180
 )
-(./Tarea4_Rivas_Vega_Saul_Ivan.aux
+(./Tarea5_Rivas_Vega_Saul_Ivan.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
-\openout1 = `Tarea4_Rivas_Vega_Saul_Ivan.aux'.
+\openout1 = `Tarea5_Rivas_Vega_Saul_Ivan.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Info: Redefining \. on input line 41.
-LaTeX Info: Redefining \% on input line 41.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Info: Redefining \. on input line 40.
+LaTeX Info: Redefining \% on input line 40.
 
 babelbib extension \btxifchangecaseoff added to \extrasspanish
 babelbib: Set bibliography fall-back language to spanish
@@ -954,266 +954,190 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 42.
+LaTeX Font Info:    Try loading font information for U+msa on input line 41.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 42.
+LaTeX Font Info:    Try loading font information for U+msb on input line 41.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 46--47
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
+Underfull \hbox (badness 10000) in paragraph at lines 71--76
 
  []
 
 [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
+Overfull \vbox (15.09425pt too high) has occurred while \output is active []
+
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 114--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 102--103
+Underfull \hbox (badness 10000) in paragraph at lines 124--126
 
  []
 
-[4] [5] [6]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 200.
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 143--148
 
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 200.
- [7]
+ []
+
+[6] [7]
+Overfull \vbox (7.26666pt too high) has occurred while \output is active []
+
+
 [8]
-<./images/hp001.png, id=46, 111.41624pt x 82.3075pt>
-File: ./images/hp001.png Graphic file (type png)
-<use ./images/hp001.png>
-Package pdftex.def Info: ./images/hp001.png  used on input line 281.
-(pdftex.def)             Requested size: 38.9994pt x 28.81056pt.
-<./images/hp002.png, id=47, 480.79625pt x 202.7575pt>
-File: ./images/hp002.png Graphic file (type png)
-<use ./images/hp002.png>
-Package pdftex.def Info: ./images/hp002.png  used on input line 287.
-(pdftex.def)             Requested size: 163.80095pt x 69.07585pt.
-
-Overfull \hbox (46.79976pt too wide) in paragraph at lines 287--288
- [][] 
- []
-
-<./images/hp003.png, id=48, 747.79375pt x 197.73875pt>
-File: ./images/hp003.png Graphic file (type png)
-<use ./images/hp003.png>
-Package pdftex.def Info: ./images/hp003.png  used on input line 293.
-(pdftex.def)             Requested size: 210.6025pt x 55.68932pt.
-
-Overfull \hbox (93.6013pt too wide) in paragraph at lines 293--294
- [][] 
- []
-
-<./images/hp004.png, id=49, 868.24374pt x 290.08376pt>
-File: ./images/hp004.png Graphic file (type png)
-<use ./images/hp004.png>
-Package pdftex.def Info: ./images/hp004.png  used on input line 299.
-(pdftex.def)             Requested size: 243.3609pt x 81.30699pt.
-
-Overfull \hbox (9.35852pt too wide) in paragraph at lines 299--300
- [][] 
- []
-
-<./images/hp005.png, id=50, 869.2475pt x 304.13625pt>
-File: ./images/hp005.png Graphic file (type png)
-<use ./images/hp005.png>
-Package pdftex.def Info: ./images/hp005.png  used on input line 305.
-(pdftex.def)             Requested size: 243.3609pt x 85.14828pt.
-
-Overfull \hbox (9.35852pt too wide) in paragraph at lines 305--306
- [][] 
- []
-
-<./images/hp006.png, id=51, 891.33pt x 289.08pt>
-File: ./images/hp006.png Graphic file (type png)
-<use ./images/hp006.png>
-Package pdftex.def Info: ./images/hp006.png  used on input line 311.
-(pdftex.def)             Requested size: 243.3609pt x 78.92601pt.
-
-Overfull \hbox (9.35852pt too wide) in paragraph at lines 311--312
- [][] 
- []
-
-<./images/hp007.png, id=52, 1005.7575pt x 290.08376pt>
-File: ./images/hp007.png Graphic file (type png)
-<use ./images/hp007.png>
-Package pdftex.def Info: ./images/hp007.png  used on input line 317.
-(pdftex.def)             Requested size: 243.3609pt x 70.18808pt.
-
-Overfull \hbox (9.35852pt too wide) in paragraph at lines 317--318
- [][] 
- []
-
-<./images/hp008.png, id=53, 1105.12875pt x 395.4775pt>
-File: ./images/hp008.png Graphic file (type png)
-<use ./images/hp008.png>
-Package pdftex.def Info: ./images/hp008.png  used on input line 323.
-(pdftex.def)             Requested size: 222.30154pt x 79.54668pt.
-<./images/hp009.png, id=54, 1078.0275pt x 387.4475pt>
-File: ./images/hp009.png Graphic file (type png)
-<use ./images/hp009.png>
-Package pdftex.def Info: ./images/hp009.png  used on input line 329.
-(pdftex.def)             Requested size: 243.3609pt x 87.46161pt.
-
-Overfull \hbox (9.35852pt too wide) in paragraph at lines 329--330
- [][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 279--333
-[]$[]$ $[]$ $[]$
- []
-
-
-Overfull \hbox (80.61584pt too wide) in paragraph at lines 279--333
-[]$ $[]$
- []
-
-
-Overfull \hbox (80.61584pt too wide) in paragraph at lines 279--333
-[]$ $[]$
- []
-
-
-Overfull \hbox (80.61584pt too wide) in paragraph at lines 279--333
-[]$ $[]$ 
- []
-
-<./images/hp010.png, id=55, 1075.01625pt x 398.48875pt>
-File: ./images/hp010.png Graphic file (type png)
-<use ./images/hp010.png>
-Package pdftex.def Info: ./images/hp010.png  used on input line 339.
-(pdftex.def)             Requested size: 300.30035pt x 111.31462pt.
-
-Overfull \hbox (27.30154pt too wide) in paragraph at lines 339--340
- [][] 
- []
-
-<./images/hp011.png, id=56, 1077.02374pt x 391.4625pt>
-File: ./images/hp011.png Graphic file (type png)
-<use ./images/hp011.png>
-Package pdftex.def Info: ./images/hp011.png  used on input line 345.
-(pdftex.def)             Requested size: 300.30035pt x 109.1488pt.
-
-Overfull \hbox (27.30154pt too wide) in paragraph at lines 345--346
- [][] 
- []
-
-<./images/hp012.png, id=57, 1073.00874pt x 384.43625pt>
-File: ./images/hp012.png Graphic file (type png)
-<use ./images/hp012.png>
-Package pdftex.def Info: ./images/hp012.png  used on input line 351.
-(pdftex.def)             Requested size: 300.30035pt x 107.58861pt.
-
-Overfull \hbox (27.30154pt too wide) in paragraph at lines 351--352
- [][] 
- []
-
-<./images/hp013.png, id=58, 1068.99374pt x 383.4325pt>
-File: ./images/hp013.png Graphic file (type png)
-<use ./images/hp013.png>
-Package pdftex.def Info: ./images/hp013.png  used on input line 357.
-(pdftex.def)             Requested size: 300.30035pt x 107.71141pt.
-
-Overfull \hbox (27.30154pt too wide) in paragraph at lines 357--358
- [][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 337--361
-[]$[]$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 337--361
-[]$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 337--361
-[]$
- []
-
-
-LaTeX Warning: Float too large for page by 21.5801pt on input line 363.
-
-<./images/hp014.png, id=59, 1052.93375pt x 391.4625pt>
-File: ./images/hp014.png Graphic file (type png)
-<use ./images/hp014.png>
-Package pdftex.def Info: ./images/hp014.png  used on input line 367.
-(pdftex.def)             Requested size: 421.19606pt x 156.59416pt.
-
-Overfull \hbox (70.19844pt too wide) in paragraph at lines 367--368
- [][] 
- []
-
-<./images/hp015.png, id=60, 1139.25626pt x 392.46625pt>
-File: ./images/hp015.png Graphic file (type png)
-<use ./images/hp015.png>
-Package pdftex.def Info: ./images/hp015.png  used on input line 373.
-(pdftex.def)             Requested size: 421.19606pt x 145.09645pt.
-
-Overfull \hbox (70.19844pt too wide) in paragraph at lines 373--374
- [][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 365--377
-[]$[]$
- []
-
-[9] [10] [11 <./images/hp001.png> <./images/hp002.png> <./images/hp003.png> <./
-images/hp004.png> <./images/hp005.png> <./images/hp006.png> <./images/hp007.png
-> <./images/hp008.png> <./images/hp009.png>] [12 <./images/hp010.png> <./images
-/hp011.png> <./images/hp012.png> <./images/hp013.png>] [13 <./images/hp014.png>
- <./images/hp015.png>] [14] [15] [16] [17] [18] [19] [20]
-Underfull \hbox (badness 10000) in paragraph at lines 506--507
+Underfull \hbox (badness 10000) in paragraph at lines 201--202
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 512--513
+Underfull \hbox (badness 10000) in paragraph at lines 204--208
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 209--217
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 518--519
+Underfull \hbox (badness 10000) in paragraph at lines 209--217
 
  []
 
-[21] [22]
-Underfull \hbox (badness 10000) in paragraph at lines 550--553
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--217
 
  []
 
-[23] [24] [25] [26] [27] [28] [29] [30] (./Tarea4_Rivas_Vega_Saul_Ivan.aux
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--217
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--217
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--217
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--217
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 219--223
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 230--232
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--249
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 251--256
+
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 266--280
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--280
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--280
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--280
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--280
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--280
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--280
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--280
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--280
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--280
+
+ []
+
+[13] [14] [15] [16] [17]
+Overfull \hbox (11.29375pt too wide) in paragraph at lines 419--420
+[] []\OT1/cmr/bx/n/12 Com-ple-ji-dad en es-pa-cio.[] \OT1/cmr/m/n/12 Adem^^Sas 
+de la en-tra-da se tie-ne un arre-glo $\OML/cmm/m/it/12 marcado$
+ []
+
+
+Overfull \hbox (22.83551pt too wide) in paragraph at lines 419--420
+\OT1/cmr/m/n/12 Tambi^^Sen usa-mos un par de va-ria-bles $\OML/cmm/m/it/12 prim
+er[]no[]repetido$ \OT1/cmr/m/n/12 y $\OML/cmm/m/it/12 posicion[]mas[]cercana$\O
+T1/cmr/m/n/12 ,
+ []
+
+[18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 458--460
+
+ []
+
+[20] [21] (./Tarea5_Rivas_Vega_Saul_Ivan.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 ) ) 
 Here is how much of TeX's memory you used:
- 16518 strings out of 494747
- 308048 string characters out of 6176207
- 371860 words of memory out of 5000000
- 19511 multiletter control sequences out of 15000+600000
- 15138 words of font info for 58 fonts, out of 8000000 for 9000
+ 16345 strings out of 494747
+ 304760 string characters out of 6176207
+ 370643 words of memory out of 5000000
+ 19357 multiletter control sequences out of 15000+600000
+ 18641 words of font info for 71 fonts, out of 8000000 for 9000
  107 hyphenation exceptions out of 8191
- 55i,18n,60p,1586b,921s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,20n,60p,1006b,930s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/share/texl
@@ -1221,22 +1145,18 @@ ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/symbols/msbm10.pfb>
-Output written on Tarea4_Rivas_Vega_Saul_Ivan.pdf (30 pages, 654395 bytes).
+1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Tarea5_Rivas_Vega_Saul_Ivan.pdf (21 pages, 234418 bytes).
 PDF statistics:
- 199 PDF objects out of 1000 (max. 8388607)
- 130 compressed objects within 2 object streams
+ 139 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 88 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
