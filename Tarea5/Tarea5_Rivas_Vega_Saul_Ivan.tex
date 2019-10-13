@@ -198,7 +198,7 @@ Se escogió el problema:
 \paragraph{Entrada.}Una gráfica $G$ que es una dupla $(V, E)$, siendo $V$ un conjunto con los vértices, y $E$ un conjunto de aristas de la forma $(u, v)$ donde $u, v\in V$ y $u \neq v$. También no hay aristas repetidas en $E$, es decir si $(u, v) \in E$ entonces $(v, u) \notin E$.
 \paragraph{Salida.} Un conjunto $C$ con vértices de $V$, tal que no hay aristas entre cualquier par de vértices en $C$. De igual forma no existe otro conjunto $C'$ tal que $C$ es subconjunto propio de $C'$.
 \subsection{Explica claramente por qué tu solución puede ser catalogada como del tipo $greedy$.}
-\paragraph{}Puede ser catalogada como del tipo $greedy$ porque el algoritmo a diferencia de recorrer arbitrariamente los vértices y agregarlos al conjunto de respuesta mientras no compartan aristas, el algoritmo recorre los vértices en orden de su degree. Toma en cuenta su degree, porque la intuición es que si vamos agregando al conjunto de respuesta a los vértices que menos vecinos tengan dejará mas opciones para agregar en una iteración posterior. Esto funciona a corto plazo pues parece que si eliminamos menos opciones por iteración entonces tendremos mas iteraciones y por lo tanto mas vértices en el conjunto respuesta. Sin embargo como se demostrará posteriormente este método no es óptimo.\\
+\paragraph{}Puede ser catalogada como del tipo $greedy$ porque el algoritmo a diferencia de recorrer arbitrariamente los vértices y agregarlos al conjunto de respuesta mientras no compartan aristas, el algoritmo recorre los vértices en orden de su degree. Toma en cuenta su degree, porque la intuición es que. en las decisiones locales, si vamos agregando al conjunto de respuesta a los vértices que menos vecinos tengan dejará mas opciones para agregar en una iteración posterior. Esto funciona a corto plazo pues parece que si eliminamos menos opciones por iteración entonces tendremos mas iteraciones y por lo tanto mas vértices en el conjunto respuesta. Sin embargo como se demostrará posteriormente este método aunque correcto para un conjunto independiente maximal, no es óptimo.\\
 \subsection{Demuestra que tu algoritmo es correcto, también demuestra su complejidad de tiempo y espacio.}
 \paragraph{El algoritmo termina}
 El ciclo de la línea 3 termina pues como recorremos una sola vez cada arista en $E$, a lo mas tendremos $|E|$ iteraciones.\\
@@ -212,7 +212,7 @@ El ciclo en la línea 3, recorre todas las aristas $(u,v)\in E$, como recorre ca
 Llevamos $O(1 + |E|)$.\\\\
 El ciclo en la línea 10, recorre todos los vértices $v\in V$, como recorre cada uno una sola vez, tiene $|V|$ iteraciones. En cada iteración se realiza una operación de inserción en la cola de prioridad $Q$ lo cual tiene complejidad $O(logn)$ donde $n=|V|$ pues son los elementos a insertar. Así el ciclo en la línea 10 tiene compĺejidad $O(|V|log(|V|))$.\\\\
 Llevamos $O(1 + |E| + |V|log(|V|))$\\\\
-El ciclo de la línea 15 tiene una función de complejidad mas interesante para representar, en conjunto con la del ciclo en la línea 18.\\
+El ciclo de la línea 15 tiene una función de complejidad mas interesante para representar, en conjunto con la del ciclo en la línea 18.\\\pagebreak\\
 Podemos decir que la función de complejidad para la primera iteración del ciclo en la linea 15 esta dada por:\\
 \begin{equation}
 f_{ciclo\_linea\_15}(1)= f_{remover\_de\_Q}(1) + f_{ciclo\_linea\_18}(|lista\_adyacencia\_u_1|)
@@ -466,7 +466,7 @@ Valor\_total = c \times valor\_objeto\_mayor\_valor
  \end{equation}
  Para todo objeto $i$ en el conjunto de objetos.\\
  Finalmente decimos que si todos los objetos tienen el mismo peso, el valor que obtenemos de llenar la caja con fracciones del objeto de mayor valor es el valor máximo que podemos obtener.
-\paragraph{Observación 2} El problema puede reducirse al caso tratado en la Observación 1.\\
+\paragraph{Observación 2} Cualquier entrada para el problema puede reducirse al caso tratado en la Observación 1.\\
 Como podemos tomar fracciones de los objetos en la entrada entonces podemos tomar fracciones de peso $1$ de cada objeto. Entonces tendremos una cantidad $w_i$ de fracciones de peso $1$ y valor $v_i/w_i$ para todo objeto $i$ en el conjunto de objetos. Pero esto lo podemos interpretar como si tuviéramos $w_i$ objetos de peso $1$ y valor $v_i/w_i$ para todo objeto $i$ en el conjunto de objetos. Por lo tanto podemos representar a la entrada como objetos del mismo peso pero con posible distinto valor, que es justo el caso que se trata en la Observación 1.
 \paragraph{Finalmente} por las observaciones 1 y 2, podemos obtener el valor máximo con el objeto con mayor relación valor/peso. El cual buscamos en el ciclo de la línea 6 y evaluando en la línea 8 para actualizar nuestra respuesta con la mejor relación que encontremos.
  \subsection{Demuestra su complejidad de tiempo.}

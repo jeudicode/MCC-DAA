@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.17)  13 OCT 2019 01:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.17)  13 OCT 2019 01:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1038,22 +1038,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--217
 
  []
 
-
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 219--223
 
  []
 
-[10]
+
 Underfull \hbox (badness 10000) in paragraph at lines 230--232
 
  []
 
-
+[11]
 Underfull \hbox (badness 10000) in paragraph at lines 246--249
 
  []
 
-[11]
+
 Underfull \hbox (badness 10000) in paragraph at lines 251--256
 
  []
@@ -1108,7 +1108,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 266--280
 
  []
 
-[13] [14] [15] [16] [17]
+[13] [14] [15] [16] [17] [18]
 Overfull \hbox (11.29375pt too wide) in paragraph at lines 419--420
 [] []\OT1/cmr/bx/n/12 Com-ple-ji-dad en es-pa-cio.[] \OT1/cmr/m/n/12 Adem^^Sas 
 de la en-tra-da se tie-ne un arre-glo $\OML/cmm/m/it/12 marcado$
@@ -1121,12 +1121,12 @@ er[]no[]repetido$ \OT1/cmr/m/n/12 y $\OML/cmm/m/it/12 posicion[]mas[]cercana$\O
 T1/cmr/m/n/12 ,
  []
 
-[18] [19]
+[19] [20]
 Underfull \hbox (badness 10000) in paragraph at lines 458--460
 
  []
 
-[20] [21] (./Tarea5_Rivas_Vega_Saul_Ivan.aux
+[21] [22] (./Tarea5_Rivas_Vega_Saul_Ivan.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 ) ) 
@@ -1153,10 +1153,10 @@ b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Tarea5_Rivas_Vega_Saul_Ivan.pdf (21 pages, 234418 bytes).
+Output written on Tarea5_Rivas_Vega_Saul_Ivan.pdf (22 pages, 234968 bytes).
 PDF statistics:
- 139 PDF objects out of 1000 (max. 8388607)
- 99 compressed objects within 1 object stream
+ 143 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
