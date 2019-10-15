@@ -418,45 +418,44 @@ Supongamos que hay un símbolo $x'$ que es el primero que no se repite y es dist
 \paragraph{Complejidad en tiempo.} Se realiza un solo recorrido de la cadena en la línea 2, por lo que llevamos $O(|S|)$.\\ Además de que en la línea 11 recorremos todos los símbolos en el alfabeto español, ahora llevamos $O(|S| + |\Sigma|)$. \\ Sin embargo la cardinalidad del alfabeto es constante y es $27$. Así llevamos entonces $O(|S| + 27)$.  \\ Simplificando con el valor dominante $|S|$ tenemos finalmente $O(|S|)$.
 \paragraph{Complejidad en espacio.} Además de la entrada se tiene un arreglo $marcado$ con un tamaño de $|\Sigma|$, por lo que llevamos $O(|\Sigma|)$.\\ También usamos un par de variables $primer\_no\_repetido$ y $posicion\_mas\_cercana$, ahora llevamos $O(|\Sigma| + 2$. \\ Sin embargo la cardinalidad del alfabeto es constante y es $27$. Así llevamos entonces $O(27 + 2)$, que es $O(29)$.  \\ Simplificando con el valor dominante que es constante y tenemos finalmente $O(1)$.
 \section{Ejercicio 4.}
-Diseña un algoritmo tipo $greedy$ para el siguiente problema de optimización. La entrada está compuesta de un conjunto con $n$ pares de enteros positivos, $\{(w_1, v_1), ..., (w_n, v_n)\}$, y un entero positivo $W$; cada $(w_i, v_i)$ representa una clase de objetos con peso $w_i$ y $valor_i$, y $W$ representa una caja que puede cargar esa cantidad de peso. El objetivo es seleccionar objetos a meter en la caja de forma tal que se maximice la suma del valor de los objetos seleccionados, permitiendo meter fracciones de objetos así como repeticiones; por ejemplo, tu algoritmo podría decidir meter dos veces el mismo objeto, una de ellas una unidad entera y la segunda solo una fracción.\\
-\begin{algorithm}[H]\small
-	\KwData{Un conjunto de $n$ pares $O$ de la forma $(w_i, v_i)$ que representa el conjunto de objetos.}
+Diseña un algoritmo tipo $greedy$ para el siguiente problema de optimización. La entrada está compuesta de un conjunto con $n$ pares de enteros positivos, $\{(w_1, v_1), ..., (w_n, v_n)\}$, y un entero positivo $W$; cada $(w_i, v_i)$ representa una clase de objetos con peso $w_i$ y valor $v_i$ , y $W$ representa una caja que puede cargar esa cantidad de peso. El objetivo es seleccionar algunos objetos de los $n$ posibles a meter en la caja de forma tal que se maximice la suma del valor de los objetos seleccionados, permitiendo meter fracciones de objetos; por ejemplo, tu algoritmo podría decidir meter la unidad completa de un objeto y solo una fracción de otro. Formalmente, para el $i$-ésimo objeto, $(w_i,v_i)$, tu algoritmo debe decidir meter una fracción $x_i\in [0,1]$ de él, tal que $weight=\sum_{i=1}^{n}{x_iw_i \leq W}$ y el valor de la solución, $val=\sum_{i=1}^{n}{x_iv_i}$, sea el máximo posible.\\
+\begin{algorithm}[H]\footnotesize
+	\KwData{Un conjunto $O$ de $n$ parejas de la forma $(w_i, v_i)$ que representa el conjunto de objetos.}
 	\KwData{Un entero positivo $W$ que representa la capacidad de peso de la caja.}
-	\KwResult{Una tripleta $(valor\_maximo, id, cantidad)$ que representa el valor maximo alcanzado, el identificador del objeto tomado, y la cantidad (que puede ser fraccional) que se tomó de dicho objeto.}
+	\KwResult{Una dupla $(valor\_maximo, objetos\_tomados)$ que representa el valor maximo alcanzado y el arreglo de pares de la forma $(id\_objeto, fraccion\_tomada)$ el identificador del objeto tomado, y la cantidad (que puede ser fraccional) que se tomó de dicho objeto.}
 	\SetAlgoLined
-	\tcc{Inicializar una variable para guardar la mayor relación valor/peso.}
-	$mayor\_relacion\_vp:=-\infty$\;
-	\tcc{Inicializar una variable para guardar el valor máximo obtenido.}
+	Inicializar la cola de prioridad $relaciones\_vp$ para guardar las relaciones valor/peso\;
+	\tcc{La cola de prioridad $relaciones\_vp$ manejará parejas de la forma $(objeto_i, -v_i/w_i)$ y ordenará por $-v_i/w_i$, en este caso esta negativo para ordenar de mayor a menor relación valor/peso.}
+	\tcc{Inicializar la variable para guardar el valor máximo obtenido}
 	$valor\_maximo:=0$\;
-	\tcc{Inicializar una variable para guardar el identificador del objeto a tomar.}
-	$id\_objeto:=0$\;
-	\tcc{Inicializar una variable para guardar el peso del objeto tomado.}
-	$peso\_objeto:=0$\;
-	\tcc{Inicializar una variable para guardar la cantidad tomada del objeto.}
-	$cantidad\_objeto:=0$\;
+	\tcc{Inicializar el conjunto de parejas en la respuesta.}
+	$objetos\_tomados:=\{\}$\;
 	\tcc{Recorremos cada posición de las parejas de la entrada.}
-	\For{$i$ desde $1$ hasta $|O|$}{
-			\tcc{Obtenemos los valores del objeto en la posición $i$.}
-			$(w_i, v_i):= O[i]$\;
-    		\tcc{Si la relación valor/peso del objeto actual es mayor a la que teníamos almacenada, la actualizamos.}
-			\If{$v_i / w_i > mayor\_relacion\_vp$}{
-				$mayor\_relacion\_vp:=v_i / w_i$\;
-				$id\_objeto:=i$\;
-				$peso\_objeto:=w_i$\;
-			}
+	\For{$i$ desde $1$ hasta $n$}{
+			\tcc{Insertamos la pareja de los valores del objeto en la posición $i$ en la cola de prioridad.}
+			Insertamos (O[i], -O[i].$v_i$/O[i].$w_i$) en $relaciones\_vp$\;
 	}
-	\tcc{Asignamos el mayor valor que podemos obtener.}
-	$valor\_maximo:=W \times mayor\_relacion\_vp$\;
-	\tcc{Asignamos la cantidad tomada del objeto.}
-	$cantidad\_objeto:=W / peso\_objeto$\;
-	return $(valor\_maximo, id\_objeto, cantidad\_objeto)$\;
+	\tcc{Recorremos los elementos en la cola de prioridad.}
+	\While{$relaciones\_vp$ no este vacía}{
+		Sacamos al objeto $o$ al frente de $relaciones\_vp$\;
+		\tcc{Tomamos la cantidad que podamos de este objeto, o 1 unidad pues no podemos tomar una fracción mayor a 1 unidad.}
+		$cantidad\_objeto:=min(1, W / o.w_i)$\;
+		\tcc{Nuestra respuesta se incrementa en el valor del objeto multiplicado por la cantidad que tomamos.}
+		$valor\_maximo:= valor\_maximo + (o.v_i \times cantidad\_objeto)$\;
+		Insertamos la pareja $(o.id, cantidad\_objeto)$ a $objetos\_tomados$\;
+		\tcc{Disminuimos el peso disponible en la caja.}
+		$W:=W-(o.w_i \times cantidad\_objeto)$\;
+		\tcc{Si ya no hay peso disponible en la caja rompemos el ciclo.}
+		\If{$W=0$}{break}
+	}
+	return $(valor\_maximo, objetos\_tomados)$\;
 	\caption{Algoritmo Mayor valor de objetos fraccionales.}
 \end{algorithm}
  \subsection{Explica por qué tu solución puede ser catalogada como del tipo $greedy$}
- \paragraph{} Es de tipo $greedy$ por que en su decisión local escoge llenar su espacio disponible con las fracciones del objeto que da mas valor por cada unidad de peso. Si lo vemos de forma que trata de tomar una fracción de peso $1$ entonces revisa de que objeto tomar ese $1$ de peso. Entonces toma el de mayor valor, pero como podemos repetir objetos podemos tomar cuantas queramos de ese objeto entonces toma todas las posibles, y si lo que le queda por llenar es menor a $1$ de peso, pues toma la fracción correspondiente. 
+ \paragraph{} Es de tipo $greedy$ por que en su decisión local escoge llenar su espacio disponible con las fracciones del objeto que da mas valor por cada unidad de peso. Entonces toma el de mayor valor, pero como no podemos repetir objetos, aunque podamos llenar toda la capacidad $W$ con fracciones de ese objeto, no podemos tomar mas que 1 unidad de ese objeto. Lo que nos quede de espacio disponible lo intentaremos llenar con el siguiente mas grande así sucesivamente hasta terminar de procesar todos los objetos o que no tengamos peso disponible. 
  \subsection{Demuestra que tu algoritmo es correcto.}
- \paragraph{Observación 1} Demostremos que en el caso en que todos los objetos tienen el mismo peso la respuesta es tomar únicamente fracciones del objeto con mayor valor.\\
- Si tomamos fracciones de este objeto con mayor valor significa que tomamos $c$ veces el objeto de mayor valor, donde $c= W/peso\_objeto\_mayor\_valor$. Esto se ve como:\\
+ \paragraph{Observación 1} Demostremos que en el caso en que todos los objetos tienen el mismo peso la respuesta es completar el peso $W$ tomando la fracción mas grande, que no sea mayor a 1 unidad, de los objetos en orden desde el objeto con mayor valor hasta el de menor valor.\\
+ Si tomamos fracciones del objeto con mayor valor significa que tomamos $c$ veces el objeto de mayor valor, donde $c= min(1,W/peso\_objeto\_mayor\_valor)$. Esto se ve como:\\
   \begin{equation}
 Valor\_total = c \times valor\_objeto\_mayor\_valor
   \end{equation}
@@ -465,17 +464,18 @@ Valor\_total = c \times valor\_objeto\_mayor\_valor
  c \times valor\_objeto\_mayor\_valor \geq c \times valor\_i
  \end{equation}
  Para todo objeto $i$ en el conjunto de objetos.\\
- Finalmente decimos que si todos los objetos tienen el mismo peso, el valor que obtenemos de llenar la caja con fracciones del objeto de mayor valor es el valor máximo que podemos obtener.
+ Finalmente decimos que si todos los objetos tienen el mismo peso, el valor que obtenemos completar el peso $W$ tomando la fracción mas grande, que no sea mayor a 1 unidad, de los objetos en orden desde el objeto con mayor valor hasta el de menor valor es el valor máximo que podemos obtener.
 \paragraph{Observación 2} Cualquier entrada para el problema puede reducirse al caso tratado en la Observación 1.\\
 Como podemos tomar fracciones de los objetos en la entrada entonces podemos tomar fracciones de peso $1$ de cada objeto. Entonces tendremos una cantidad $w_i$ de fracciones de peso $1$ y valor $v_i/w_i$ para todo objeto $i$ en el conjunto de objetos. Pero esto lo podemos interpretar como si tuviéramos $w_i$ objetos de peso $1$ y valor $v_i/w_i$ para todo objeto $i$ en el conjunto de objetos. Por lo tanto podemos representar a la entrada como objetos del mismo peso pero con posible distinto valor, que es justo el caso que se trata en la Observación 1.
-\paragraph{Finalmente} por las observaciones 1 y 2, podemos obtener el valor máximo con el objeto con mayor relación valor/peso. El cual buscamos en el ciclo de la línea 6 y evaluando en la línea 8 para actualizar nuestra respuesta con la mejor relación que encontremos.
- \subsection{Demuestra su complejidad de tiempo.}
- \paragraph{} Fuera del ciclo en la línea 6 solo realizamos inicializaciones y operaciones aritméticas las cuales podemos considerar de complejidad $O(1)$.\\
- En dicho ciclo realizamos $n$ iteraciones pues el conjunto de objetos es de cardinalidad $n$ y recorremos cada posición entre $1$ y $n$. \\ 
- En cada iteración  del ciclo realizamos unas comparaciones, asignaciones y operaciones aritméticas que podemos considerar como constantes $O(1)$.\\
- Así el ciclo tiene complejidad $O(n)$.\\
- Finalmente como el factor dominante es $O(n)$ el algoritmo es de complejidad en tiempo de $O(n)$.
- \subsection{Demuestra su complejidad de espacio(cantidad de memoria adicional a la entrada).}
- Además de la entrada solo se declaran 5 variables en las primeras 5 lineas del algoritmo respectivamente.\\
- Como es constante el número de variables adicionales a la entrada podemos decir que el algoritmo tienen una complejidad en memoria de $O(1)$.
+\paragraph{Finalmente} por las observaciones 1 y 2, podemos obtener el valor máximo al completar el peso $W$ tomando la fracción mas grande, que no sea mayor a 1 unidad, de los objetos en orden desde el objeto con mayor relación valor/peso hasta el de menor relación valor/peso. Lo cual hacemos después de insertar los objetos para procesarlos en orden de mayor relación valor/peso en el ciclo de la línea 7, tomando en consideración la restricción de no tomar mas de 1 unidad del objeto en la línea 9, así como terminando el ciclo si ya no nos queda espacio en la caja con la evaluación en la línea 13.
+\subsection{Demuestra su complejidad de tiempo.}
+ \paragraph{} Hasta antes de la línea 4 solo realizamos inicializaciones las cuales podemos considerar de complejidad $O(1)$.\\
+ En el ciclo de la línea 4 realizamos $n$ iteraciones pues el conjunto de objetos es de cardinalidad $n$ y recorremos cada posición entre $1$ y $n$. En cada iteración de este ciclo realizamos una inserción en la cola de prioridad $relaciones\_vp$, la cual tiene complejidad $O(logn)$. Por lo tanto este ciclo es de complejidad $O(nlogn)$.\\ 
+ En el ciclo de la línea 7 realizamos $n$ iteraciones pues sacamos un elemento de la cola de prioridad en cada iteración y solo tiene $n$ elementos.En cada iteración de este ciclo removemos un elemento de la cola de prioridad $relaciones\_vp$, la cual tiene complejidad $O(logn)$. También realizamos unas evaluaciones, asignaciones y operaciones aritméticas básicas las cuales podemos considerar de complejidad $O(1)$. Por lo tanto este ciclo es de complejidad $O(nlogn)$, $n$ iteraciones donde el factor dominante en cada una es $logn$. \\
+ 
+ Finalmente como el factor dominante en los ciclos $O(nlogn)$ el algoritmo es de complejidad en tiempo de $O(n)$.
+ \subsection{Demuestra su complejidad de espacio (cantidad de memoria adicional a la entrada).}
+ Además de la entrada se declaran 2 variables en las lineas 2 y 3 del algoritmo respectivamente.\\
+ Así como una cola de prioridad que crecerá con respecto a la entrada teniendo $n$ elementos.
+ Como el número de variables adicionales se incrementa de manera lineal con respecto a la entrada podemos decir que el algoritmo tienen una complejidad en memoria de $O(n)$.
 \end{document}  
