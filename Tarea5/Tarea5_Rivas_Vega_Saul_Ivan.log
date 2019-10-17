@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.9.5)  14 OCT 2019 19:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.9.5)  17 OCT 2019 06:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1138,7 +1138,7 @@ LaTeX Info: Redefining \% on input line 8.
 Here is how much of TeX's memory you used:
  16353 strings out of 494788
  304901 string characters out of 6177223
- 370492 words of memory out of 5000000
+ 370491 words of memory out of 5000000
  19357 multiletter control sequences out of 15000+600000
  19675 words of font info for 75 fonts, out of 8000000 for 9000
  85 hyphenation exceptions out of 8191

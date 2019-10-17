@@ -473,7 +473,7 @@ Como podemos tomar fracciones de los objetos en la entrada entonces podemos toma
  En el ciclo de la línea 4 realizamos $n$ iteraciones pues el conjunto de objetos es de cardinalidad $n$ y recorremos cada posición entre $1$ y $n$. En cada iteración de este ciclo realizamos una inserción en la cola de prioridad $relaciones\_vp$, la cual tiene complejidad $O(logn)$. Por lo tanto este ciclo es de complejidad $O(nlogn)$.\\ 
  En el ciclo de la línea 7 realizamos $n$ iteraciones pues sacamos un elemento de la cola de prioridad en cada iteración y solo tiene $n$ elementos.En cada iteración de este ciclo removemos un elemento de la cola de prioridad $relaciones\_vp$, la cual tiene complejidad $O(logn)$. También realizamos unas evaluaciones, asignaciones y operaciones aritméticas básicas las cuales podemos considerar de complejidad $O(1)$. Por lo tanto este ciclo es de complejidad $O(nlogn)$, $n$ iteraciones donde el factor dominante en cada una es $logn$. \\
  
- Finalmente como el factor dominante en los ciclos $O(nlogn)$ el algoritmo es de complejidad en tiempo de $O(n)$.
+ Finalmente como el factor dominante en los ciclos $O(nlogn)$ el algoritmo es de complejidad en tiempo de $O(nlogn)$.
  \subsection{Demuestra su complejidad de espacio (cantidad de memoria adicional a la entrada).}
  Además de la entrada se declaran 2 variables en las lineas 2 y 3 del algoritmo respectivamente.\\
  Así como una cola de prioridad que crecerá con respecto a la entrada teniendo $n$ elementos.
