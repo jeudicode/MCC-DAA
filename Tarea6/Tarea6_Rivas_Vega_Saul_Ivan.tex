@@ -5,6 +5,7 @@
 	top=20mm,
 }
 \usepackage[utf8]{inputenc}
+\usepackage[shortlabels]{enumitem}
 \usepackage{array}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \usepackage[spanish]{babel}
@@ -112,7 +113,7 @@ Esto es, el algoritmo seguirá bajando en en árbol hasta llegar a una hoja, pue
 \paragraph{Observación 2} Las operaciones realizadas al ser invocado en una hoja, o al regresar de las llamadas recursivas, son de tiempo constante. Es decir que a partir de la línea $9$ hasta el final de las operaciones, solo se realizan comparaciones y asignaciones que podemos considerar de tiempo constante.   \\
 Por la observación 1 podemos decir que como existen $n$ nodos, se realizarán $n$ veces las operaciones descritas en la Observación 2 y al ser de tiempo constante decimos que realizamos $n$ veces operaciones de tiempo constante. \\
 Finalmente decimos que el algoritmo es de complejidad $O(n)$.
-\subsection{Observación} Se pide solo el diseño del algoritmo con la complejidad $O(n)$ en el ejercicio pero se incluye una explicación de porque es correcto.
+\subsection{Explicación} Se pide solo el diseño del algoritmo con la complejidad $O(n)$ en el ejercicio pero se incluye una explicación de porque es correcto.
 \paragraph{Correctitud.} 
 El algoritmo termina pues por la Observación 1, no se realizarán mas llamadas recursivas al llegar a las hojas, y  en estas solo se toma en cuenta el if en la línea $9$ si es que devolvemos o no al nodo para emparejar. Siendo el número de llamadas $n$ y en cada llamada se realiza un número constante de operaciones.\\
 \paragraph{Observación 3} En cada invocación se deja a lo más un nodo sin emparejar  en el subárbol con raíz $u$. Esto lo podemos demostrar por inducción.\\
@@ -149,7 +150,27 @@ Tomemos el subárbol $T_j$ el cuál tiene como raíz al nodo inferior en dicha a
 \pagebreak
 \paragraph{} Eso quiere decir que en el subárbol $T_j$ existen por lo menos 2 nodos cuyas respectivas parejas se encuentran fuera de $T_j$. Si tomamos la invocación del algoritmo en la raíz de $T_j$, para que cumpla que las parejas de esos 2 nodos no están en $T_j$, al terminar dicha invocación debió dejar esos 2 nodos libres. Sin embargo esto es una contradicción ya que por la Observación 3 al terminar una invocación se deja a lo mas 1 nodo libre en el subárbol.\\
 Finalmente como no puede existir ni una sola arista por el cual pasan dos caminos entre parejas decimos que  las parejas resultantes no comparten aristas en el camino que las conecta.\\
+\pagebreak
 \section{Ejercicio 2.}
+\paragraph{} Considera las siguientes recurrencias para las que $T(1)=c$:
+\begin{enumerate}[a)]
+\item $T(n)=T(n/2) + O(1)$. Prueba que $T(n)=\Theta(logn)$.
+\item $T(n)=T(n/2) + O(n)$. Prueba que $T(n)=O(n)$.
+\item $T(n)=T(n/d) + T(n(d-1)/d) + O(n)$, donde $d$ es un entero positivo. Prueba que $T(n)=O(nlogn)$.
+\end{enumerate}
+\subsection{$T(n)=T(n/2) + O(1)$. Prueba que $T(n)=\Theta(logn)$.}
+\paragraph{} Tomemos la siguiente representación de la recurrencia.
+\begin{equation}
+\begin{split}
+T(n) & =T(n/2) + O(1) \\
+T(n) - T(n/2) & = O(1) \\
+T(n) - T(n/2) & \in O(1) \\
+\end{split}
+\end{equation}
+Eso quiere decir que existe una constante $C>0$ y un $n_0$ tal que para toda  $n\geq n_0$ se cumple que:
+ \begin{equation}
+	T(n)-T(n/2) \leq C
+ \end{equation}
 \section{Ejercicio 3.}
 Se tienen dos bases de datos, $BD_1$ y $BD_2$, cada una con $n$ valores numéricos distintos, en total $2n$ valores distintos. La única manera de accesar los datos es mediante preguntas, en las cuales se le da un valor $i\in\{1,..., n\}$ a una de las dos bases de datos, $BD_j$, y esta responde con el $i$-ésimo valor más pequeño que contiene $BD_j$. Diseña un algoritmo que dado un entero $k\in\{1,...,2n\}$ de entrada, encuentre el $k$-ésimo valor más pequeño en las bases de datos, usando $O(logn)$ preguntas. Demuestra la correctez y complejidad de tu algoritmo.
 \subsection{Algoritmo}
