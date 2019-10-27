@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.17)  26 OCT 2019 21:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.17)  27 OCT 2019 12:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1025,218 +1025,86 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <./images/tree_1.png, id=11, 906.38625pt x 698.61pt>
 File: ./images/tree_1.png Graphic file (type png)
 <use ./images/tree_1.png>
-Package pdftex.def Info: ./images/tree_1.png  used on input line 52.
-(pdftex.def)             Requested size: 465.24431pt x 358.58893pt.
- [2 <./images/tree_1.png>] [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 105--108
+Package pdftex.def Info: ./images/tree_1.png  used on input line 54.
+(pdftex.def)             Requested size: 181.27403pt x 139.71951pt.
+ [2 <./images/tree_1.png>] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 108--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--109
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--115
+Underfull \hbox (badness 10000) in paragraph at lines 117--118
 
  []
 
-[5]
-<./images/ARBOL.png, id=34, 651.43375pt x 603.25375pt>
+[4]
+<./images/ARBOL.png, id=31, 651.43375pt x 603.25375pt>
 File: ./images/ARBOL.png Graphic file (type png)
 <use ./images/ARBOL.png>
-Package pdftex.def Info: ./images/ARBOL.png  used on input line 142.
+Package pdftex.def Info: ./images/ARBOL.png  used on input line 145.
 (pdftex.def)             Requested size: 325.71606pt x 301.62613pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6] [7 <./images/ARBOL.png>] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 187--191
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 150--152
 
  []
 
-
-Overfull \hbox (0.93903pt too wide) in paragraph at lines 197--199
-\OT1/cmr/m/n/12 Como ha-ce-mos $\OML/cmm/m/it/12 n$ \OT1/cmr/m/n/12 ite-ra-cio-
-nes en-ton-ces te-ne-mos que el ci-clo $\OML/cmm/m/it/12 while$ \OT1/cmr/m/n/12
- es de com-ple-ji-dad $\OML/cmm/m/it/12 O\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 nlog
-n\OT1/cmr/m/n/12 )$. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 197--199
+[6 <./images/ARBOL.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 191--204
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 216--221
-
- []
-
-[9] [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 277--281
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 282--290
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 282--290
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 282--290
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 282--290
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 282--290
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 282--290
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 282--290
-
- []
-
-[12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 292--296
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 303--305
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 319--322
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 324--329
-
- []
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 339--353
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 339--353
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 339--353
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 339--353
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 339--353
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 339--353
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 339--353
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 339--353
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 339--353
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 339--353
-
- []
-
-[15] [16]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[17] [18] [19] [20] [21]
-Underfull \hbox (badness 10000) in paragraph at lines 530--532
-
- []
-
-[22]
-Underfull \hbox (badness 10000) in paragraph at lines 545--548
-
- []
-
-[23] [24] (./Tarea6_Rivas_Vega_Saul_Ivan.aux
+[7] [8]
+<./images/codificacion.png, id=50, 301.125pt x 323.2075pt>
+File: ./images/codificacion.png Graphic file (type png)
+<use ./images/codificacion.png>
+Package pdftex.def Info: ./images/codificacion.png  used on input line 217.
+(pdftex.def)             Requested size: 150.56212pt x 161.60335pt.
+ [9 <./images/codificacion.png>]
+<./images/codificacion2.png, id=55, 365.365pt x 243.91125pt>
+File: ./images/codificacion2.png Graphic file (type png)
+<use ./images/codificacion2.png>
+Package pdftex.def Info: ./images/codificacion2.png  used on input line 242.
+(pdftex.def)             Requested size: 182.68205pt x 121.95532pt.
+ [10 <./images/codificacion2.png>]
+(./Tarea6_Rivas_Vega_Saul_Ivan.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 ) ) 
 Here is how much of TeX's memory you used:
- 16845 strings out of 494747
- 312132 string characters out of 6176207
- 390392 words of memory out of 5000000
- 19841 multiletter control sequences out of 15000+600000
- 20022 words of font info for 76 fonts, out of 8000000 for 9000
+ 16738 strings out of 494747
+ 310115 string characters out of 6176207
+ 382287 words of memory out of 5000000
+ 19734 multiletter control sequences out of 15000+600000
+ 15563 words of font info for 60 fonts, out of 8000000 for 9000
  107 hyphenation exceptions out of 8191
- 55i,20n,60p,1006b,930s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,18n,54p,633b,617s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Tarea6_Rivas_Vega_Saul_Ivan.pdf (24 pages, 298681 bytes).
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Tarea6_Rivas_Vega_Saul_Ivan.pdf (10 pages, 248637 bytes).
 PDF statistics:
- 161 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
+ 108 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
